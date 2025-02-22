@@ -131,7 +131,8 @@
       <main class="py-2">
        
         <div class="px-2">
-          <div v-if="activeComponent === 'Ledger'">
+          hello
+          <!-- <div v-if="activeComponent === 'Ledger'">
             <ledger />
           </div>
           <div v-if="activeComponent === 'Trades'">
@@ -150,7 +151,7 @@
           </div>
           <div class="w-full" v-if="profilepanel">
             <profile/>
-          </div>
+          </div> -->
    
         </div>
       </main>
