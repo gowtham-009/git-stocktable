@@ -131,10 +131,10 @@
       <main class="py-2">
        
         <div class="px-2">
-          hello
+        
           <!-- <div v-if="activeComponent === 'Ledger'">
             <ledger />
-          </div>
+          </div> -->
           <div v-if="activeComponent === 'Trades'">
             <trades />
           </div>
@@ -151,7 +151,7 @@
           </div>
           <div class="w-full" v-if="profilepanel">
             <profile/>
-          </div> -->
+          </div>
    
         </div>
       </main>
