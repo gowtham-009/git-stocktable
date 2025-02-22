@@ -778,7 +778,7 @@ maxdaysValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((ite
 } finally {
  
 }
-close();
+
 }
 
 }
