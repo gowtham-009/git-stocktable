@@ -571,8 +571,8 @@ finally{
 }
 };
 
-const filtereddata= async (datefilterval, close)=>{
-  close()
+const filtereddata= async (datefilterval)=>{
+ 
 if (datefilterval == 'days_7') {
 
 console.log(filters.value)
