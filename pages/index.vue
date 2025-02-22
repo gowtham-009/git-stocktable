@@ -132,9 +132,9 @@
        
         <div class="px-2">
         
-          <!-- <div v-if="activeComponent === 'Ledger'">
+          <div v-if="activeComponent === 'Ledger'">
             <ledger />
-          </div> -->
+          </div>
           <div v-if="activeComponent === 'Trades'">
             <trades />
           </div>
@@ -162,7 +162,7 @@
 <script setup>
 import { ref } from 'vue'
 
-import ledger from '~/components/tableview.vue'
+import ledger from '~/components/leadger.vue'
 import profile from '~/components/profile.vue'
 import trades from '~/components/trades.vue'
 import profiltloss from '~/components/profitloss.vue'
