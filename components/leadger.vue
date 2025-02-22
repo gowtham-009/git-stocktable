@@ -168,13 +168,13 @@
      <transition  enter-active-class="transition ease-out duration-200" enter-from-class="opacity-0 translate-y-1" 
        enter-to-class="opacity-100 translate-y-0" leave-active-class="transition ease-in duration-150"
        leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0 translate-y-1">
-       <PopoverPanel  class="absolute left z-10 mt-2 flex w-screen max-w-max -translate-x-1/2 px-4">
+       <PopoverPanel v-slot="{ close }"  class="absolute left z-10 mt-2 flex w-screen max-w-max -translate-x-1/2 px-4">
          <div
            class="w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-white text-sm/6 shadow-lg ring-1 ring-gray-900/5">
            <div class="p-4">
              <span class="text-lg"><i class="pi pi-clock"></i> Frequently used time period</span>
              <div class="w-full p-1 flex gap-2 pl-5">
-               <button type="button" @click="filtereddata('days_7')" :class="{'bg-indigo-600 text-white': activedata === 'days_7', 'hover:bg-indigo-50 hover:text-black': activedata == 'days_7'}"
+               <button type="button" @click="filtereddata('days_7', close)" :class="{'bg-indigo-600 text-white': activedata === 'days_7', 'hover:bg-indigo-50 hover:text-black': activedata == 'days_7'}"
                  class="rounded-md  px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-indigo-50 hover:text-black-500">
                  7 Days</button>
                <button type="button"  @click="filtereddata('days_15')" :class="{'bg-indigo-600 text-white': activedata === 'days_15', 'hover:bg-indigo-50 hover:text-black': activedata == 'days_15'}"
@@ -571,8 +571,8 @@ finally{
 }
 };
 
-const filtereddata= async (datefilterval)=>{
-
+const filtereddata= async (datefilterval, close)=>{
+  close()
 if (datefilterval == 'days_7') {
 
 console.log(filters.value)

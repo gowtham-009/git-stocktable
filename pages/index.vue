@@ -112,7 +112,7 @@
                 <span class="sr-only">Open user menu</span>
                 <img class="w-10 h-10 rounded-full bg-gray-50" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
                 <span class="hidden lg:flex lg:items-center">
-                  <span class="ml-4 text-sm/6 font-semibold text-gray-900" aria-hidden="true"></span>
+                  <span class="ml-4 text-sm/6 font-semibold text-gray-900" aria-hidden="true">{{ val }}</span>
                   <ChevronDownIcon class="ml-2 w-10 h-10 text-gray-400" aria-hidden="true" />
                 </span>
               </MenuButton>
@@ -169,7 +169,7 @@ import profiltloss from '~/components/profitloss.vue'
 import funds from '~/components/funds.vue'
 import withdraw from '~/components/withdraw.vue'
 import { onMounted} from "vue";
-//import { useRoute, useRouter } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import {
   Dialog,
   DialogPanel,
@@ -231,17 +231,17 @@ if(item.name=='Your profile'){
 
 
 
-//const router = useRouter();
-//const route = useRoute();
-//const val = ref(route.query.val || 'GWD001'); 
+const router = useRouter();
+const route = useRoute();
+const val = ref(route.query.val || 'GWD001'); 
 
-//onMounted(() => {
+onMounted(() => {
 
-  //if (route.query.val) {
+  if (route.query.val) {
   
-  //  router.replace({ path: route.path, query: {} });
+   router.replace({ path: route.path, query: {} });
  
-  //}
-//});
+  }
+});
 
 </script>
