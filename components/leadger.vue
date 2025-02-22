@@ -203,7 +203,7 @@
        </div>
         </div>
        <div class="w-full flex justify-start mt-2">
-           <button @click="filtereddata('daterangefilter', close)"
+           <button @click="filtereddata('daterangefilter')"
 class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 
       hover:bg-indigo-50 hover:text-black">
 Apply filter
