@@ -575,7 +575,7 @@ const filtereddata= async (datefilterval)=>{
  
 if (datefilterval == 'days_7') {
 
-console.log(filters.value)
+
 rangetext.value='7 Days'
 activedata.value='days_7'
 const today = new Date();
@@ -807,6 +807,7 @@ watch(mininvValue,maxinvValue, initFilters);
 watch(minoverValue,maxoverValue, initFilters);
 watch(mindaysValue,maxdaysValue, initFilters);
 watch(minmktValue,maxmktValue, initFilters);
+
 const applyDateFilter = () => {
 if (filters.value.date.constraints[0].value) {
 let selectedDate = filters.value.date.constraints[0].value;
