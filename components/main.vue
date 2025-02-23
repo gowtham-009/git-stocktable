@@ -156,22 +156,19 @@
       </div>
 
       <div>
-   <Popover class="relative">
-     <PopoverButton class="inline-flex items-center gap-x-1 text-sm/6 font-semibold outline-none text-slate-500 border rounded-lg p-1 hover:bg-indigo-50">
-
-       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+       
+        <div class="relative">
+    <button @click="togglePopover" class="p-1 border rounded-lg text-gray-500 ">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
          stroke="currentColor" class="w-6 h-6">
          <path stroke-linecap="round" stroke-linejoin="round"
            d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
        </svg>
+        </button>
 
-     </PopoverButton>
-
-     <transition  enter-active-class="transition ease-out duration-200" enter-from-class="opacity-0 translate-y-1" 
-       enter-to-class="opacity-100 translate-y-0" leave-active-class="transition ease-in duration-150"
-       leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0 translate-y-1">
-       <PopoverPanel  class="absolute left z-10 mt-2 flex w-screen max-w-max -translate-x-1/2 px-4">
-         <div
+        <transition name="fade">
+      <div v-if="isVisiblecustom" class="popover-box ">
+        <div
            class="w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-white text-sm/6 shadow-lg ring-1 ring-gray-900/5">
            <div class="p-4">
              <span class="text-lg"><i class="pi pi-clock"></i> Frequently used time period</span>
@@ -215,9 +212,11 @@ Apply filter
            </div>
 
          </div>
-       </PopoverPanel>
-     </transition>
-   </Popover>
+      </div>
+    </transition>
+  </div>
+
+   
  </div>
 
 
@@ -541,6 +540,8 @@ Apply filter
         </Drawer>
     </div>
    </div>
+
+ 
   </template>
   
   <script setup>
@@ -552,7 +553,7 @@ Apply filter
   import { FilterMatchMode, FilterOperator } from '@primevue/core/api';
   import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue'
 import { ChevronDownIcon } from '@heroicons/vue/20/solid'
-
+const isOpen = ref(false)
 const noofrows=ref(0)
 const loading=ref(true)
 const content=ref(false)
@@ -577,6 +578,13 @@ const rangetext=ref('')
 
   const start = ref(null);
 const end = ref(null);
+
+
+const isVisiblecustom = ref(false);
+
+const togglePopover = () => {
+  isVisiblecustom.value = !isVisiblecustom.value;
+};
 
   const getLedgerDate = async () => {
     const ledgerApi = `https://backoffice.w3webtechnologies.co.in/bo-api/api-ledger-data.php?clientCode=${props.customValue}`;
@@ -615,12 +623,18 @@ const end = ref(null);
 
   watch([minDrAmt, maxDrAmt], initFilters);
   watch([mincrAmt, maxcrAmt], initFilters);
+
  
   const formatDater = (date) => {
     return date.toLocaleDateString('en-GB').split('/').join('-'); // Format to dd-mm-yyyy
     };
-    const getFilteredData = (dateFilterValue, close) => {
-      close()
+
+
+    const getFilteredData = (dateFilterValue) => {
+      isVisiblecustom.value=false
+      if(dateFilterValue){
+        isOpen.value = false
+      }
     const today = new Date();
     today.setHours(23, 59, 59, 999);
     let startDate = new Date(today);
@@ -680,6 +694,7 @@ const end = ref(null);
             mincrAmt.value = Math.min(...storedData.value.map(item => item.cr_amt));
             maxcrAmt.value = Math.max(...storedData.value.map(item => item.cr_amt));
         }
+   
     }
 
    
@@ -762,5 +777,23 @@ const selectedRow = ref(null);
   
     box-shadow: none !important;
   }
+  .popover-box {
+  position: absolute;
+  top: 30px;
+  left: 0;
+
+  padding: 10px;
+  
+  z-index: 30;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
 
 </style>
