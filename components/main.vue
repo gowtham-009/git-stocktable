@@ -176,16 +176,16 @@
            <div class="p-4">
              <span class="text-lg"><i class="pi pi-clock"></i> Frequently used time period</span>
              <div class="w-full p-1 flex gap-2 pl-5">
-               <button type="button" @click="getFilteredData('days_7')" :class="{'bg-indigo-600 text-white': activedata === 'days_7', 'hover:bg-indigo-50 hover:text-black': activedata == 'days_7'}"
+               <button type="button" @click="getFilteredData('days_7', close)" :class="{'bg-indigo-600 text-white': activedata === 'days_7', 'hover:bg-indigo-50 hover:text-black': activedata == 'days_7'}"
                  class="rounded-md  px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-indigo-50 hover:text-black-500">
                  7 Days</button>
-               <button type="button"  @click="getFilteredData('days_15')" :class="{'bg-indigo-600 text-white': activedata === 'days_15', 'hover:bg-indigo-50 hover:text-black': activedata == 'days_15'}"
+               <button type="button"  @click="getFilteredData('days_15', close)" :class="{'bg-indigo-600 text-white': activedata === 'days_15', 'hover:bg-indigo-50 hover:text-black': activedata == 'days_15'}"
                  class="rounded-md   px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-indigo-50 hover:text-black-500">15
                  Days</button>
-               <button type="button"  @click="getFilteredData('month_1')" :class="{'bg-indigo-600 text-white': activedata === 'month_1', 'hover:bg-indigo-50 hover:text-black': activedata == 'month_1'}"
+               <button type="button"  @click="getFilteredData('month_1', close)" :class="{'bg-indigo-600 text-white': activedata === 'month_1', 'hover:bg-indigo-50 hover:text-black': activedata == 'month_1'}"
                  class="rounded-md  px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-indigo-50 hover:text-black-500">1
                  Month</button>
-               <button type="button"  @click="getFilteredData('months_3')" :class="{'bg-indigo-600 text-white': activedata === 'months_3', 'hover:bg-indigo-50 hover:text-black': activedata == 'months_3'}"
+               <button type="button"  @click="getFilteredData('months_3', close)" :class="{'bg-indigo-600 text-white': activedata === 'months_3', 'hover:bg-indigo-50 hover:text-black': activedata == 'months_3'}"
                  class="rounded-md  px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-indigo-50 hover:text-black-500">3
                  Months</button>
              </div>
@@ -620,6 +620,7 @@ const end = ref(null);
     return date.toLocaleDateString('en-GB').split('/').join('-'); // Format to dd-mm-yyyy
     };
     const getFilteredData = (dateFilterValue, close) => {
+      close()
     const today = new Date();
     today.setHours(23, 59, 59, 999);
     let startDate = new Date(today);

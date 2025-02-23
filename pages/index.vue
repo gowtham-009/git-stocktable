@@ -194,7 +194,7 @@
 <script setup>
 import { ref } from 'vue'
 
-import ledger from '~/components/l1.vue'
+import ledger from '~/components/main.vue'
 import fasummary from '~/components/fasummary.vue'
 import profile from '~/components/profile.vue'
 import trades from '~/components/trades.vue'
