@@ -718,7 +718,7 @@ const columns = ref([
 
 ]);
 
-const selectedColumns = ref(columns.value.filter(col => ![].includes(col.field)));
+const selectedColumns = ref(columns.value.filter(col => !['cr_amt', 'dr_amt'].includes(col.field)));
 const visibleColumns = ref(selectedColumns.value.map(col => col.field)); // Tracks visibility
 const showReset = ref(true); // Ensure reset is visible as some columns are unchecked initially
 
