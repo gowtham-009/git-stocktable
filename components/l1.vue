@@ -17,7 +17,7 @@
         <div class="w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-white text-sm/6 shadow-lg ring-1 ring-gray-900/5">
           <div class="p-4">
             <!-- Button that calls a function and closes the popover -->
-            <button type="button" @click="testing('value')">Close & Run Function</button>
+            <button type="button" @click="testing('value', close)">Close & Run Function</button>
           </div>
         </div>
       </PopoverPanel>
@@ -30,7 +30,7 @@ import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue'
 import { ChevronDownIcon } from '@heroicons/vue/20/solid'
 
 // Custom function
-const testing = (value) => {
+const testing = (value, close) => {
   close()
  if(value=='value'){
     console.log('hello')
