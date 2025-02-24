@@ -877,6 +877,62 @@
                             "realizedpl": "3600.40",
                             "charges": "105.40",
                             "net_realizedpl": "3495.00"
+                        },
+                        {
+                            "month": "January-2016",
+                            "date": "2025-02-18",
+                            "no_of_trades": "8",
+                            "realizedpl": "3600.40",
+                            "charges": "105.40",
+                            "net_realizedpl": "3495.00"
+                        },
+                        {
+                            "month": "January-2016",
+                            "date": "2025-02-19",
+                            "no_of_trades": "8",
+                            "realizedpl": "3600.40",
+                            "charges": "105.40",
+                            "net_realizedpl": "3495.00"
+                        },
+                        {
+                            "month": "January-2016",
+                            "date": "2025-02-20",
+                            "no_of_trades": "8",
+                            "realizedpl": "3600.40",
+                            "charges": "105.40",
+                            "net_realizedpl": "3495.00"
+                        },
+                        {
+                            "month": "January-2016",
+                            "date": "2025-02-21",
+                            "no_of_trades": "8",
+                            "realizedpl": "3600.40",
+                            "charges": "105.40",
+                            "net_realizedpl": "3495.00"
+                        },
+                        {
+                            "month": "January-2016",
+                            "date": "2025-02-22",
+                            "no_of_trades": "8",
+                            "realizedpl": "3600.40",
+                            "charges": "105.40",
+                            "net_realizedpl": "3495.00"
+                        },
+                        {
+                            "month": "January-2016",
+                            "date": "2025-02-23",
+                            "no_of_trades": "8",
+                            "realizedpl": "3600.40",
+                            "charges": "105.40",
+                            "net_realizedpl": "3495.00"
+                        },
+                        {
+                            "month": "January-2016",
+                            "date": "2025-02-24",
+                            "no_of_trades": "8",
+                            "realizedpl": "3600.40",
+                            "charges": "105.40",
+                            "net_realizedpl": "3495.00"
                         }
                 
                     

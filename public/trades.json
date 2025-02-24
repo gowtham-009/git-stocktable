@@ -1070,6 +1070,96 @@
                 "buysellprice": "300.50",
                 "brokerage": "7.80",
                 "charges": "10.10"
+            },
+            {
+                "scriptname": "ZETA INFRA",
+                "orderid": "130000634706",
+                "date": "2025-02-16",
+                "action": "SELL",
+                "quantity": "30",
+                "buysellprice": "300.50",
+                "brokerage": "7.80",
+                "charges": "10.10"
+            },
+            {
+                "scriptname": "ZETA INFRA",
+                "orderid": "130000634706",
+                "date": "2025-02-17",
+                "action": "SELL",
+                "quantity": "30",
+                "buysellprice": "300.50",
+                "brokerage": "7.80",
+                "charges": "10.10"
+            },
+            {
+                "scriptname": "ZETA INFRA",
+                "orderid": "130000634706",
+                "date": "2025-02-18",
+                "action": "SELL",
+                "quantity": "30",
+                "buysellprice": "300.50",
+                "brokerage": "7.80",
+                "charges": "10.10"
+            },
+            {
+                "scriptname": "ZETA INFRA",
+                "orderid": "130000634706",
+                "date": "2025-02-19",
+                "action": "SELL",
+                "quantity": "30",
+                "buysellprice": "300.50",
+                "brokerage": "7.80",
+                "charges": "10.10"
+            },
+            {
+                "scriptname": "ZETA INFRA",
+                "orderid": "130000634706",
+                "date": "2025-02-20",
+                "action": "SELL",
+                "quantity": "30",
+                "buysellprice": "300.50",
+                "brokerage": "7.80",
+                "charges": "10.10"
+            },
+            {
+                "scriptname": "ZETA INFRA",
+                "orderid": "130000634706",
+                "date": "2025-02-21",
+                "action": "SELL",
+                "quantity": "30",
+                "buysellprice": "300.50",
+                "brokerage": "7.80",
+                "charges": "10.10"
+            },
+            {
+                "scriptname": "ZETA INFRA",
+                "orderid": "130000634706",
+                "date": "2025-02-22",
+                "action": "SELL",
+                "quantity": "30",
+                "buysellprice": "300.50",
+                "brokerage": "7.80",
+                "charges": "10.10"
+            },
+            {
+                "scriptname": "ZETA INFRA",
+                "orderid": "130000634706",
+                "date": "2025-02-23",
+                "action": "SELL",
+                "quantity": "30",
+                "buysellprice": "300.50",
+                "brokerage": "7.80",
+                "charges": "10.10"
+            },
+            {
+                "scriptname": "ZETA INFRA",
+                "orderid": "130000634706",
+                "date": "2025-02-24",
+                "action": "SELL",
+                "quantity": "30",
+                "buysellprice": "300.50",
+                "brokerage": "7.80",
+                "charges": "10.10"
             }
         
         
