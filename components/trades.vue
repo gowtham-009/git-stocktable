@@ -667,11 +667,7 @@
   } catch (error) {
   console.error("Error:", error.message);
   }
-  
-  
-  
-  
-  
+
     const today = new Date();
     const fifteenDaysAgo = new Date();
     fifteenDaysAgo.setDate(today.getDate() - 15);

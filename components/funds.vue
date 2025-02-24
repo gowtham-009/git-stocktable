@@ -342,7 +342,8 @@
 
 
 
-
+  const minamountValue=ref('')
+  const maxamountValue=ref('')
 
 
   const filters = ref();
@@ -372,7 +373,7 @@ const initFilters = () => {
         account: { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.STARTS_WITH }] },
         bank: { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.STARTS_WITH }] },
         date: { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.EQUALS }] },
-        amount: { value: [0, 100000], matchMode: FilterMatchMode.BETWEEN },
+        amount: { value: [minamountValue.value, maxamountValue.value], matchMode: FilterMatchMode.BETWEEN },
         status: { operator: FilterOperator.OR, constraints: [{ value: null, matchMode: FilterMatchMode.EQUALS }] },
     };
 };
