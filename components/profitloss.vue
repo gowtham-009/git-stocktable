@@ -232,11 +232,7 @@
       <dd class="text-xs font-medium text-rose-600">+10.18%</dd>
       <dd class="w-full flex-none text-3xl/10 font-medium tracking-tight text-gray-900">₹{{ todaygain }}</dd>
     </div>
-  </dl>
-  
-  
-  
-     
+  </dl> 
       </div>
     </div>
   
