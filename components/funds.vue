@@ -220,8 +220,6 @@
 
         
 <Drawer v-model:visible="visibleRight" header="Stock Details" position="right" class="!w-90 md:!w-80 lg:!w-[80rem] wd" >
-
-
 <hr>
 <div class="w-full p-1 flex flex-col h-full justify-between" >
 <div class="w-full flex wrap" >
@@ -359,7 +357,7 @@ const getdata = async () => {
          minAmount.value = Math.min(...data.map(customer => customer.amount));
          maxAmount.value = Math.min(...data.map(customer => customer.amount));
 
-        console.log('Minimum Amount:', minAmount);
+        console.log('Minimum Amount:', minAmount.value);
     } catch (error) {
         console.error('Error:', error.message);
     }
@@ -380,7 +378,7 @@ const initFilters = () => {
         account: { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.STARTS_WITH }] },
         bank: { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.STARTS_WITH }] },
         date: { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.EQUALS }] },
-        amount: { value: [minAmount.value, maxAmount.value], matchMode: FilterMatchMode.BETWEEN },
+        amount: { value: [0, 10000], matchMode: FilterMatchMode.BETWEEN },
         status: { operator: FilterOperator.OR, constraints: [{ value: null, matchMode: FilterMatchMode.EQUALS }] },
     };
 };

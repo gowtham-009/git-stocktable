@@ -326,15 +326,16 @@
   </Column>
   <Column  class="cursor-pointer" v-if="visibleColumns.includes('quantity')" field="quantity" sortable header="Quantity" :showFilterOperator="false" :showFilterMatchModes="false">
     <template #body="{ data }">
-         <span @click="rightcanva(data)"> {{ data.quantity }}</span>
-      </template>
-<template #filter="{ filterModel }">
-  <Slider v-model="filterModel.value" range class="m-4" :min="1" :max="1000"></Slider>
-  <div class="flex items-center justify-between px-2">
-      <span>{{ filterModel.value ? filterModel.value[0] : 0 }}</span>
-      <span>{{ filterModel.value ? filterModel.value[1] : 100 }}</span>
-  </div>
-</template>
+       <span @click="rightcanva(data)"> {{ data.quantity }}</span>
+     </template>
+     <template #filter="{ filterModel }">
+       <Slider v-model="filterModel.value" range class="m-4" :min="minQuantityValue" :max="maxQuantityValue"></Slider>
+       <div class="flex items-center justify-between px-2">
+     
+         <span>{{ filterModel.value ? filterModel.value[0] : minQuantityValue }}</span>
+         <span>{{ filterModel.value ? filterModel.value[1] : maxQuantityValue }}</span>
+       </div>
+     </template>
   </Column>
   <Column  class="cursor-pointer" v-if="visibleColumns.includes('buysellprice')" field="buysellprice" sortable header="Buy/Sell Price" :showFilterOperator="false" :showFilterMatchModes="false">
     <template #body="{ data }">
@@ -551,12 +552,15 @@
   const startdate=ref('')
   const enddate=ref('')
   
+  const minQuantityValue=ref('')
+const maxQuantityValue=ref('')
+
   const initFilters = () => {
     filters.value = {
         global: { value: null, matchMode: FilterMatchMode.CONTAINS },
         scriptname: { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.STARTS_WITH }] },
         orderid: { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.STARTS_WITH }] },
-        quantity: { value: [0, 1000], matchMode: FilterMatchMode.BETWEEN },
+        quantity: { value: [minQuantityValue.value, maxQuantityValue.value], matchMode: FilterMatchMode.BETWEEN },
         buysellprice: { value: [0, 1000], matchMode: FilterMatchMode.BETWEEN },
         brokerage: { value: [0, 1000], matchMode: FilterMatchMode.BETWEEN },
         charges: { value: [0, 1000], matchMode: FilterMatchMode.BETWEEN },
@@ -564,6 +568,7 @@
         action: { operator: FilterOperator.OR, constraints: [{ value: null, matchMode: FilterMatchMode.EQUALS }] },    };
   };
   
+  watch(minQuantityValue, maxQuantityValue, initFilters);
   const statuses = ref(['BUY', 'SELL']);
   const applyDateFilter = () => {
   if (filters.value.date.constraints[0].value) {
@@ -623,6 +628,8 @@
         return customerDate >= sevenDaysAgo && customerDate <= today;
     });
   
+    minQuantityValue.value = filteredCustomers.length > 0 ? Math.min(...filteredCustomers.map((item) => item.quantity)) : 0;
+maxQuantityValue.value = filteredCustomers.length > 0 ? Math.max(...filteredCustomers.map((item) => item.quantity)) : 0;
     activeFilter.value = 'week'; // Update active filter
     confirm.close();
   

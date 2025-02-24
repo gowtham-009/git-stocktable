@@ -277,7 +277,7 @@ Apply filter
    <template #loading> Loading customers data. Please wait. </template>
 
    <Column class="cursor-pointer" v-if="visibleColumns.includes('stockname')" sortable field="stockname"
-     header="Stockname">
+     header="Script Name">
      <template #body="{ data }">
       <span @click="rightcanva(data)">{{ data.stockname }}</span>
      </template>
@@ -309,7 +309,7 @@ Apply filter
          @update:modelValue="applyDateFilter" />
      </template>
    </Column>
-   <Column class="cursor-pointer"  v-if="visibleColumns.includes('avgprice')"  sortable field="avgprice" header="Avgprice"  :showFilterOperator="false" :showFilterMatchModes="false">
+   <Column class="cursor-pointer"  v-if="visibleColumns.includes('avgprice')"  sortable field="avgprice" header="Brokerage"  :showFilterOperator="false" :showFilterMatchModes="false">
      <template #body="{ data }">
        <span @click="rightcanva(data)">{{ data.avgprice }}</span>
      </template>
@@ -321,7 +321,7 @@ Apply filter
        </div>
      </template>
    </Column>
-   <Column class="cursor-pointer"  v-if="visibleColumns.includes('ltp')"  sortable field="ltp" header="LTP"  :showFilterOperator="false" :showFilterMatchModes="false">
+   <Column class="cursor-pointer"  v-if="visibleColumns.includes('ltp')"  sortable field="ltp" header="Charges"  :showFilterOperator="false" :showFilterMatchModes="false">
      <template #body="{ data }">
        <span @click="rightcanva(data)"> {{ data.ltp }}</span>
      </template>
@@ -333,54 +333,10 @@ Apply filter
        </div>
      </template>
    </Column>
-   <Column class="cursor-pointer"  v-if="visibleColumns.includes('invamt')" sortable field="invamt" header="INV"  :showFilterOperator="false" :showFilterMatchModes="false">
-     <template #body="{ data }">
-       <span @click="rightcanva(data)">{{ data.invamt }}</span>
-     </template>
-     <template #filter="{ filterModel }">
-       <Slider v-model="filterModel.value" range class="m-4" :min="mininvValue" :max="maxinvValue"></Slider>
-       <div class="flex items-center justify-between px-2">
-         <span>{{ filterModel.value ? filterModel.value[0] : mininvValue }}</span>
-         <span>{{ filterModel.value ? filterModel.value[1] : maxinvValue }}</span>
-       </div>
-     </template>
-   </Column>
-   <Column class="cursor-pointer"  v-if="visibleColumns.includes('mktval')"  field="mktval" sortable header="Mktval":showFilterOperator="false" :showFilterMatchModes="false">
-     <template #body="{ data }">
-       <span @click="rightcanva(data)">{{ data.mktval }}</span>
-     </template>
-     <template #filter="{ filterModel }">
-       <Slider v-model="filterModel.value" range class="m-4" :min="minmktValue" :max="maxmktValue"></Slider>
-       <div class="flex items-center justify-between px-2">
-         <span>{{ filterModel.value ? filterModel.value[0] : minmktValue }}</span>
-         <span>{{ filterModel.value ? filterModel.value[1] : maxmktValue }}</span>
-       </div>
-     </template>
-   </Column>
-   <Column class="cursor-pointer"  v-if="visibleColumns.includes('overall')" sortable field="overall"header="Overall"  :showFilterOperator="false" :showFilterMatchModes="false">
-     <template #body="{ data }">
-       <span @click="rightcanva(data)">{{ data.overall }}</span>
-     </template>
-     <template #filter="{ filterModel }">
-       <Slider v-model="filterModel.value" range class="m-4" :min="minoverValue" :max="maxoverValue"></Slider>
-       <div class="flex items-center justify-between px-2">
-         <span>{{ filterModel.value ? filterModel.value[0] : minoverValue }}</span>
-         <span>{{ filterModel.value ? filterModel.value[1] : maxoverValue }}</span>
-       </div>
-     </template>
-   </Column>
-   <Column class="cursor-pointer"  v-if="visibleColumns.includes('days')"  sortable field="days" header="Days"  :showFilterOperator="false" :showFilterMatchModes="false">
-     <template #body="{ data }">
-       <span @click="rightcanva(data)"> {{ data.days }}</span>
-     </template>
-     <template #filter="{ filterModel }">
-       <Slider v-model="filterModel.value" range class="m-4" :min="mindaysValue" :max="maxdaysValue"></Slider>
-       <div class="flex items-center justify-between px-2">
-         <span>{{ filterModel.value ? filterModel.value[0] : mindaysValue }}</span>
-         <span>{{ filterModel.value ? filterModel.value[1] : maxdaysValue }}</span>
-       </div>
-     </template>
-   </Column>
+   
+   
+   
+  
 
    </DataTable>
   
@@ -465,22 +421,10 @@ Tab-6
    <div class="w-full " ><span>LTP</span></div>
    <div class="w-full " ><span>{{ltp}}</span></div>
  </div>
- <div class="w-full  flex">
-   <div class="w-full " ><span>INV Amount</span></div>
-   <div class="w-full " ><span>{{invamt}}</span></div>
- </div>
- <div class="w-full  flex">
-   <div class="w-full " ><span>MKT Value</span></div>
-   <div class="w-full " ><span>{{mktval}}</span></div>
- </div>
- <div class="w-full  flex">
-   <div class="w-full " ><span>Over All</span></div>
-   <div class="w-full " ><span>{{overall}}</span></div>
- </div>
- <div class="w-full  flex">
-   <div class="w-full " ><span>Days</span></div>
-   <div class="w-full " ><span>{{days}}</span></div>
- </div>
+ 
+
+
+
 
   
 </AccordionContent>
@@ -540,17 +484,10 @@ const maxavgValue=ref('')
 const minltpValue=ref('')
 const maxltpValue=ref('')
 
-const minmktValue=ref('')
-const maxmktValue=ref('')
 
-const mininvValue=ref('')
-const maxinvValue=ref('')
 
-const minoverValue=ref('')
-const maxoverValue=ref('')
 
-const mindaysValue=ref('')
-const maxdaysValue=ref('')
+
 
 
 const getdata = async () => {
@@ -602,14 +539,7 @@ minavgValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item
 maxavgValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.avgprice)) : 0;
 minltpValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item) => item.ltp)) : 0;
 maxltpValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.ltp)) : 0;
-mininvValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item) => item.invamt)) : 0;
-maxinvValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.invamt)) : 0;
-minmktValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item) => item.mktval)) : 0;
-maxmktValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.mktval)) : 0;
-minoverValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item) => item.overall)) : 0;
-maxoverValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.overall)) : 0;
-mindaysValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item) => item.days)) : 0;
-maxdaysValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.days)) : 0;
+
     initFilters();
 }
 
@@ -640,14 +570,7 @@ minavgValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item
 maxavgValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.avgprice)) : 0;
 minltpValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item) => item.ltp)) : 0;
 maxltpValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.ltp)) : 0;
-mininvValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item) => item.invamt)) : 0;
-maxinvValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.invamt)) : 0;
-minmktValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item) => item.mktval)) : 0;
-maxmktValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.mktval)) : 0;
-minoverValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item) => item.overall)) : 0;
-maxoverValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.overall)) : 0;
-mindaysValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item) => item.days)) : 0;
-maxdaysValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.days)) : 0;
+
     initFilters();
  
 }
@@ -678,14 +601,7 @@ minavgValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item
 maxavgValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.avgprice)) : 0;
 minltpValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item) => item.ltp)) : 0;
 maxltpValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.ltp)) : 0;
-mininvValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item) => item.invamt)) : 0;
-maxinvValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.invamt)) : 0;
-minmktValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item) => item.mktval)) : 0;
-maxmktValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.mktval)) : 0;
-minoverValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item) => item.overall)) : 0;
-maxoverValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.overall)) : 0;
-mindaysValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item) => item.days)) : 0;
-maxdaysValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.days)) : 0;
+
     initFilters();
 }
 
@@ -717,14 +633,7 @@ minavgValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item
 maxavgValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.avgprice)) : 0;
 minltpValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item) => item.ltp)) : 0;
 maxltpValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.ltp)) : 0;
-mininvValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item) => item.invamt)) : 0;
-maxinvValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.invamt)) : 0;
-minmktValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item) => item.mktval)) : 0;
-maxmktValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.mktval)) : 0;
-minoverValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item) => item.overall)) : 0;
-maxoverValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.overall)) : 0;
-mindaysValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item) => item.days)) : 0;
-maxdaysValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.days)) : 0;
+
     initFilters();
 }
 else if(datefilterval=='daterangefilter'){
@@ -764,14 +673,7 @@ minavgValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item
 maxavgValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.avgprice)) : 0;
 minltpValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item) => item.ltp)) : 0;
 maxltpValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.ltp)) : 0;
-mininvValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item) => item.invamt)) : 0;
-maxinvValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.invamt)) : 0;
-minmktValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item) => item.mktval)) : 0;
-maxmktValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.mktval)) : 0;
-minoverValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item) => item.overall)) : 0;
-maxoverValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.overall)) : 0;
-mindaysValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item) => item.days)) : 0;
-maxdaysValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.days)) : 0;
+
     initFilters();
 } catch (error) {
    console.error("Error:", error.message);
@@ -791,10 +693,7 @@ stockname: { operator: FilterOperator.AND, constraints: [{ value: null, matchMod
 quantity: { value: [minQuantityValue.value, maxQuantityValue.value], matchMode: FilterMatchMode.BETWEEN },
 avgprice: { value:  [minavgValue.value, maxavgValue.value], matchMode: FilterMatchMode.BETWEEN },
 ltp: { value:[minltpValue.value, maxltpValue.value] , matchMode: FilterMatchMode.BETWEEN },
-invamt: { value:  [mininvValue.value, maxinvValue.value], matchMode: FilterMatchMode.BETWEEN },
-mktval: { value: [minmktValue.value, maxmktValue.value], matchMode: FilterMatchMode.BETWEEN },
-overall: { value: [minoverValue.value, maxoverValue.value], matchMode: FilterMatchMode.BETWEEN },
-days: { value: [mindaysValue.value, maxdaysValue.value], matchMode: FilterMatchMode.BETWEEN },
+
 date: { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.EQUALS }] },
 
 };
@@ -803,10 +702,6 @@ date: { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: Fi
 watch(minQuantityValue, maxQuantityValue, initFilters);
 watch(minavgValue,maxavgValue, initFilters);
 watch(minltpValue,maxltpValue, initFilters);
-watch(mininvValue,maxinvValue, initFilters);
-watch(minoverValue,maxoverValue, initFilters);
-watch(mindaysValue,maxdaysValue, initFilters);
-watch(minmktValue,maxmktValue, initFilters);
 
 const applyDateFilter = () => {
 if (filters.value.date.constraints[0].value) {
@@ -830,19 +725,16 @@ getdata();
 
 
 const columns = ref([
-{ field: 'stockname', header: 'STOCK NAME' },
-{ field: 'quantity', header: 'QUANTITY' },
-{ field: 'avgprice', header: 'AVG PRICE' },
-{ field: 'ltp', header: 'LTP' },
-{ field: 'invamt', header: 'INV' },
-{ field: 'mktval', header: 'MKT' },
-{ field: 'overall', header: 'OVERALL' },
-{ field: 'days', header: 'DAYS' },
-{ field: 'date', header: 'DATE' },
+{ field: 'stockname', header: 'Script Name' },
+{ field: 'quantity', header: ' Quantity' },
+{ field: 'avgprice', header: 'Brokerage' },
+{ field: 'ltp', header: 'Charges' },
+
+{ field: 'date', header: 'Date' },
 
 ]);
 //Initially select all columns except 'ltp', 'mktval', and 'date'
-const selectedColumns = ref(columns.value.filter(col => !['ltp', 'mktval', 'date'].includes(col.field)));
+const selectedColumns = ref(columns.value.filter(col => ![ 'date'].includes(col.field)));
 const visibleColumns = ref(selectedColumns.value.map(col => col.field)); // Tracks visibility
 const showReset = ref(true); // Ensure reset is visible as some columns are unchecked initially
 
@@ -870,10 +762,7 @@ const dateval=ref('')
 const quant=ref('')
 const avg=ref('')
 const ltp=ref('')
-const invamt=ref('')
-const mktval=ref('')
-const overall=ref('')
-const days=ref('')
+
 
 const rightcanva =(dataval)=>{
 
@@ -883,10 +772,7 @@ dateval.value=dataval.date
 quant.value=dataval.quantity
 avg.value=dataval.avgprice
 ltp.value=dataval.ltp
-invamt.value=dataval.invamt
-mktval.value=dataval.mktval
-overall.value=dataval.overall
-days.value=dataval.days
+
 }
 
 const proceedfun=async()=>{
@@ -896,10 +782,7 @@ formdata.append('date', dateval.value)
 formdata.append('quantity', quant.value)
 formdata.append('averageprice', avg.value)
 formdata.append('ltp', ltp.value)
-formdata.append('invamt', invamt.value)
-formdata.append('mktval', mktval.value)
-formdata.append('overall', overall.value)
-formdata.append('days', days.value)
+
 const api='https://fakestoreapi.com/products'
 try {
 const res = await fetch(api,{
@@ -924,10 +807,7 @@ formdata.append('date', dateval.value)
 formdata.append('quantity', quant.value)
 formdata.append('averageprice', avg.value)
 formdata.append('ltp', ltp.value)
-formdata.append('invamt', invamt.value)
-formdata.append('mktval', mktval.value)
-formdata.append('overall', overall.value)
-formdata.append('days', days.value)
+
 const api='https://fakestoreapi.com/products'
 try {
 const res = await fetch(api,{
