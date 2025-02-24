@@ -342,22 +342,29 @@
 
 
 
-  const minamountValue=ref('')
-  const maxamountValue=ref('')
+  const minAmount=ref('')
+  const maxAmount=ref('')
 
 
   const filters = ref();
 const customers=ref([])
 const getdata = async () => {
     try {
-      const res = await fetch('/fadded.json');
-      if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
-      customers.value = await res.json();
-      
+        const res = await fetch('/fadded.json');
+        if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
+
+        const data = await res.json();
+        customers.value = data; 
+
+         minAmount.value = Math.min(...data.map(customer => customer.amount));
+         maxAmount.value = Math.min(...data.map(customer => customer.amount));
+
+        console.log('Minimum Amount:', minAmount);
     } catch (error) {
-      console.error('Error:', error.message);
+        console.error('Error:', error.message);
     }
-  };
+};
+
 onMounted(() => {
     getdata()
     setInterval(() => {
@@ -373,7 +380,7 @@ const initFilters = () => {
         account: { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.STARTS_WITH }] },
         bank: { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.STARTS_WITH }] },
         date: { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.EQUALS }] },
-        amount: { value: [0, 100000], matchMode: FilterMatchMode.BETWEEN },
+        amount: { value: [minAmount.value, maxAmount.value], matchMode: FilterMatchMode.BETWEEN },
         status: { operator: FilterOperator.OR, constraints: [{ value: null, matchMode: FilterMatchMode.EQUALS }] },
     };
 };

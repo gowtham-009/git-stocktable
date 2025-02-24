@@ -1,5 +1,7 @@
 <template>
-  <div  class="w-full" v-if="loading">
+    <Toast />
+   
+    <div  class="w-full" v-if="loading">
 <div class="p-1 space-y-4">
 
 
@@ -11,6 +13,28 @@
 </div>
 </div>
 
+<dl class="mx-auto grid grid-cols-1 p-2 gap-px  sm:grid-cols-2 lg:grid-cols-4 border border-gray-300 rounded-lg">
+    <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2 bg-white px-4 py-10 sm:px-6 xl:px-8 animate-pulse">
+      <dt class="h-4 w-20 bg-gray-300 rounded"></dt>
+      <dd class="h-3 w-10 bg-gray-300 rounded"></dd>
+      <dd class="w-full h-8 bg-gray-300 rounded"></dd>
+    </div>
+    <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2 bg-white px-4 py-10 sm:px-6 xl:px-8 animate-pulse">
+      <dt class="h-4 w-20 bg-gray-300 rounded"></dt>
+      <dd class="h-3 w-10 bg-gray-300 rounded"></dd>
+      <dd class="w-full h-8 bg-gray-300 rounded"></dd>
+    </div>
+    <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2 bg-white px-4 py-10 sm:px-6 xl:px-8 animate-pulse">
+      <dt class="h-4 w-20 bg-gray-300 rounded"></dt>
+      <dd class="h-3 w-10 bg-gray-300 rounded"></dd>
+      <dd class="w-full h-8 bg-gray-300 rounded"></dd>
+    </div>
+    <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2 bg-white px-4 py-10 sm:px-6 xl:px-8 animate-pulse">
+      <dt class="h-4 w-20 bg-gray-300 rounded"></dt>
+      <dd class="h-3 w-10 bg-gray-300 rounded"></dd>
+      <dd class="w-full h-8 bg-gray-300 rounded"></dd>
+    </div>
+  </dl>
 
 <!-- Table Skeleton -->
 
@@ -21,6 +45,8 @@
  <div class="h-12 w-8 bg-gray-200 animate-pulse rounded"></div>
  <div class="h-12 w-8 bg-gray-200 animate-pulse rounded"></div>
 </div>
+
+
 
    <div class="grid grid-cols-7 bg-gray-100 p-3 font-semibold">
        <div class="h-8 w-20 bg-gray-200 animate-pulse rounded"></div>
@@ -145,45 +171,42 @@
 </div>
 </div>
 </div>
+  
+   <div v-if="content">
+    <div class="w-full p-1 flex gap-2 items-end">
+      <div>
+        <div class="text-slate-500">Statement For  {{ rangetext }} </div>
+        <div class="text-black-500"><span>{{ startdate }}</span> To <span>{{ enddate }}</span></div>
+      </div>
 
-
-<div class="w-full p-1" v-if="content">
-   <div class="w-full p-1 flex gap-2 items-end" >
-<div>
- <div class="text-slate-500">Statement For {{ rangetext }} </div>
- <div class="text-black-500"><span>{{ startdate }}</span> To <span>{{ enddate }}</span></div>
-</div>
- <div>
-   <Popover class="relative">
-     <PopoverButton class="inline-flex items-center gap-x-1 text-sm/6 font-semibold outline-none text-slate-500 border rounded-lg p-1 hover:bg-indigo-50">
-
-       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+      <div>
+       
+        <div class="relative">
+    <button @click="togglePopover" class="p-1 border rounded-lg text-gray-500 hover:bg-indigo-50 ">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
          stroke="currentColor" class="w-6 h-6">
          <path stroke-linecap="round" stroke-linejoin="round"
            d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
        </svg>
+        </button>
 
-     </PopoverButton>
-
-     <transition  enter-active-class="transition ease-out duration-200" enter-from-class="opacity-0 translate-y-1" 
-       enter-to-class="opacity-100 translate-y-0" leave-active-class="transition ease-in duration-150"
-       leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0 translate-y-1">
-       <PopoverPanel  class="absolute left z-10 mt-2 flex w-screen max-w-max -translate-x-1/2 px-4">
-         <div
+        <transition name="fade">
+      <div v-if="isVisiblecustom" class="popover-box ">
+        <div
            class="w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-white text-sm/6 shadow-lg ring-1 ring-gray-900/5">
            <div class="p-4">
              <span class="text-lg"><i class="pi pi-clock"></i> Frequently used time period</span>
              <div class="w-full p-1 flex gap-2 pl-5">
-               <button type="button" @click="filtereddata('days_7')" :class="{'bg-indigo-600 text-white': activedata === 'days_7', 'hover:bg-indigo-50 hover:text-black': activedata == 'days_7'}"
+               <button type="button" @click="getFilteredData('days_7', close)" :class="{'bg-indigo-600 text-white': activedata === 'days_7', 'hover:bg-indigo-50 hover:text-black': activedata == 'days_7'}"
                  class="rounded-md  px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-indigo-50 hover:text-black-500">
                  7 Days</button>
-               <button type="button"  @click="filtereddata('days_15')" :class="{'bg-indigo-600 text-white': activedata === 'days_15', 'hover:bg-indigo-50 hover:text-black': activedata == 'days_15'}"
+               <button type="button"  @click="getFilteredData('days_15', close)" :class="{'bg-indigo-600 text-white': activedata === 'days_15', 'hover:bg-indigo-50 hover:text-black': activedata == 'days_15'}"
                  class="rounded-md   px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-indigo-50 hover:text-black-500">15
                  Days</button>
-               <button type="button"  @click="filtereddata('month_1')" :class="{'bg-indigo-600 text-white': activedata === 'month_1', 'hover:bg-indigo-50 hover:text-black': activedata == 'month_1'}"
+               <button type="button"  @click="getFilteredData('month_1', close)" :class="{'bg-indigo-600 text-white': activedata === 'month_1', 'hover:bg-indigo-50 hover:text-black': activedata == 'month_1'}"
                  class="rounded-md  px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-indigo-50 hover:text-black-500">1
                  Month</button>
-               <button type="button"  @click="filtereddata('months_3')" :class="{'bg-indigo-600 text-white': activedata === 'months_3', 'hover:bg-indigo-50 hover:text-black': activedata == 'months_3'}"
+               <button type="button"  @click="getFilteredData('months_3', close)" :class="{'bg-indigo-600 text-white': activedata === 'months_3', 'hover:bg-indigo-50 hover:text-black': activedata == 'months_3'}"
                  class="rounded-md  px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-indigo-50 hover:text-black-500">3
                  Months</button>
              </div>
@@ -203,7 +226,7 @@
        </div>
         </div>
        <div class="w-full flex justify-start mt-2">
-           <button @click="filtereddata('daterangefilter')"
+           <button @click="getFilteredData('daterangefilter')"
 class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 
       hover:bg-indigo-50 hover:text-black">
 Apply filter
@@ -213,24 +236,64 @@ Apply filter
            </div>
 
          </div>
-       </PopoverPanel>
-     </transition>
-   </Popover>
+      </div>
+    </transition>
+  </div>
+
+   
  </div>
 
-</div>
-</div>
-<div class="w-full p-1 mt-2" >
-   
-</div>
 
-<div class="card">
-   <DataTable ref="dt" v-model:filters="filters" :value="datarows" paginator :rows="10" removableSort dataKey="id"
-   filterDisplay="menu" :loading="loading" :globalFilterFields="['stockname', 'quantity']">
-   <template #paginatorstart>
+    </div>
+
+    <div class="w-full mt-2" >
+      <div class="overflow-hidden rounded-lg bg-white shadow  mt-1">
+      <div class="px-2 py-2 ">
+  
+   <dl class="mx-auto grid grid-cols-1 gap-px bg-gray-900/5 sm:grid-cols-2 lg:grid-cols-4">
+    <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2  bg-white px-4 py-10 sm:px-6 xl:px-8">
+      <dt class="text-sm/6 font-medium text-gray-500">Invested Amount</dt>
+      <dd class="text-xs font-medium text-gray-700">+4.75%</dd>
+      <dd class="w-full flex-none text-3xl/10 font-medium tracking-tight  text-gray-900">₹{{ investamount }}</dd>
+    </div>
+    <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2 bg-white px-4 py-10 sm:px-6 xl:px-8">
+      <dt class="text-sm/6 font-medium text-gray-500">Current Value</dt>
+      <dd class="text-xs font-medium text-rose-600">+54.02%</dd>
+      <dd class="w-full flex-none text-3xl/10 font-medium tracking-tight text-gray-900">₹{{ currentvalue }}</dd>
+    </div>
+    <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2 bg-white px-4 py-10 sm:px-6 xl:px-8">
+      <dt class="text-sm/6 font-medium text-gray-500">Overall Gain</dt>
+      <dd class="text-xs font-medium text-gray-700">-1.39%</dd>
+      <dd class="w-full flex-none text-3xl/10 font-medium tracking-tight text-gray-900">₹{{ overallgain }}</dd>
+    </div>
+    <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2 bg-white px-4 py-10 sm:px-6 xl:px-8">
+      <dt class="text-sm/6 font-medium text-gray-500">Today's Gain</dt>
+      <dd class="text-xs font-medium text-rose-600">+10.18%</dd>
+      <dd class="w-full flex-none text-3xl/10 font-medium tracking-tight text-gray-900">₹{{ todaysgain }}</dd>
+    </div>
+  </dl> 
+      </div>
+    </div>
+    </div>
+
+    <div class="w-full p-1 mt-2" >
+
+      <DataTable 
+      ref="dt"
+       @row-click="rightcanva"
+       v-model:filters="filters"
+        paginator :rows="10"
+         :value="storedData"
+          class="cursor-pointer"
+          dataKey="id"
+         filterDisplay="menu" :loading="loading" :globalFilterFields="['clientcode', 'cocd', 'settlement_no']"
+          removableSort>
+          
+          <template #paginatorstart>
            <span>No of Rows {{ noofrows }}</span>
        </template>
-   <template #header>
+ 
+          <template #header>
      <div class="flex justify-end gap-2 items-center">
 
        <IconField>
@@ -276,573 +339,472 @@ Apply filter
    <template #empty> No customers found. </template>
    <template #loading> Loading customers data. Please wait. </template>
 
-   <Column class="cursor-pointer" v-if="visibleColumns.includes('stockname')" sortable field="stockname"
-     header="Stockname">
-     <template #body="{ data }">
-      <span @click="rightcanva(data)">{{ data.stockname }}</span>
+        <Column v-if="visibleColumns.includes('clientcode')" sortable field="clientcode" header="Client Code">
+            <template #body="{ data }">
+            <span >{{ data.clientcode }}</span>
+            </template>
+            <template #filter="{ filterModel }">
+            <InputText v-model="filterModel.value" type="text" placeholder="Search by ClientCode" />
+            </template>
+        </Column>
+        <Column v-if="visibleColumns.includes('cocd')" sortable field="cocd" header="COCD">
+          <template #body="{ data }">
+            <span >{{ data.cocd }}</span>
+            </template>
+            <template #filter="{ filterModel }">
+            <InputText v-model="filterModel.value" type="text" placeholder="Search by cocd" />
+            </template>
+        </Column>
+        <Column v-if="visibleColumns.includes('dr_amt')" sortable field="dr_amt" header="Dr_Amt" :showFilterOperator="false" :showFilterMatchModes="false">
+            <template #body="{ data }">
+            <span > {{ data.dr_amt }}</span>
+            </template>
+            <template #filter="{ filterModel }">
+            <Slider v-model="filterModel.value" range class="m-4" :min="minDrAmt" :max="maxDrAmt"></Slider>
+            <div class="flex items-center justify-between px-2">
+                <span>{{ filterModel.value ? filterModel.value[0] : minDrAmt }}</span>
+                <span>{{ filterModel.value ? filterModel.value[1] : maxDrAmt }}</span>
+            </div>
+            </template>
+        </Column>
+        <Column v-if="visibleColumns.includes('cr_amt')" sortable field="cr_amt" header="Cr_Amt" :showFilterOperator="false" :showFilterMatchModes="false">
+            <template #body="{ data }">
+            <span > {{ data.cr_amt }}</span>
+            </template>
+            <template #filter="{ filterModel }">
+            <Slider v-model="filterModel.value" range class="m-4" :min="mincrAmt" :max="maxcrAmt"></Slider>
+            <div class="flex items-center justify-between px-2">
+                <span>{{ filterModel.value ? filterModel.value[0] : mincrAmt }}</span>
+                <span>{{ filterModel.value ? filterModel.value[1] : maxcrAmt }}</span>
+            </div>
+            </template>
+        </Column>
+        <Column v-if="visibleColumns.includes('voucherdate')" sortable field="voucherdate" dataType="date" header="Voucher Date">
+          <template #body="{ data }">
+            {{ formatDate(data.voucherdate) }}
+          </template>
+          <template #filter="{ filterModel }">
+            <Calendar v-model="filterModel.value" dateFormat="dd-mm-yy" />
+          </template>
+        </Column>
+        <Column v-if="visibleColumns.includes('settlement_no')" sortable field="settlement_no" header="Settlement No">
+            <template #body="{ data }">
+      <span >{{ data.settlement_no }}</span>
      </template>
      <template #filter="{ filterModel }">
-       <InputText v-model="filterModel.value" type="text" placeholder="Search by name" />
+       <InputText v-model="filterModel.value" type="text" placeholder="Search by settlement no" />
      </template>
-   </Column>
-   <Column class="cursor-pointer" v-if="visibleColumns.includes('quantity')" sortable field="quantity"header="Quantity"  :showFilterOperator="false" :showFilterMatchModes="false">
-     <template #body="{ data }">
-       <span @click="rightcanva(data)"> {{ data.quantity }}</span>
-     </template>
-     <template #filter="{ filterModel }">
-       <Slider v-model="filterModel.value" range class="m-4" :min="minQuantityValue" :max="maxQuantityValue"></Slider>
-       <div class="flex items-center justify-between px-2">
-     
-         <span>{{ filterModel.value ? filterModel.value[0] : minQuantityValue }}</span>
-         <span>{{ filterModel.value ? filterModel.value[1] : maxQuantityValue }}</span>
-       </div>
-     </template>
-   </Column>
+        </Column>
 
-   <Column class="cursor-pointer"  v-if="visibleColumns.includes('date')"  sortable field="date" header="Date"  :showFilterOperator="false" :showFilterMatchModes="false">
-     <template #body="{ data }">
-       <span @click="rightcanva(data)">{{ formatDatee(data.date) }}</span>
-      
-     </template>
-     <template #filter="{ filterModel }">
-       <DatePicker v-model="filters.date.constraints[0].value" dateFormat="dd-mm-yy" showIcon
-         @update:modelValue="applyDateFilter" />
-     </template>
-   </Column>
-   <Column class="cursor-pointer"  v-if="visibleColumns.includes('avgprice')"  sortable field="avgprice" header="Avgprice"  :showFilterOperator="false" :showFilterMatchModes="false">
-     <template #body="{ data }">
-       <span @click="rightcanva(data)">{{ data.avgprice }}</span>
-     </template>
-     <template #filter="{ filterModel }">
-       <Slider v-model="filterModel.value" range class="m-4" :min="minavgValue" :max="maxavgValue" ></Slider>
-       <div class="flex items-center justify-between px-2">
-         <span>{{ filterModel.value ? filterModel.value[0] : minavgValue }}</span>
-         <span>{{ filterModel.value ? filterModel.value[1] : maxavgValue }}</span>
-       </div>
-     </template>
-   </Column>
-   <Column class="cursor-pointer"  v-if="visibleColumns.includes('ltp')"  sortable field="ltp" header="LTP"  :showFilterOperator="false" :showFilterMatchModes="false">
-     <template #body="{ data }">
-       <span @click="rightcanva(data)"> {{ data.ltp }}</span>
-     </template>
-     <template #filter="{ filterModel }">
-       <Slider v-model="filterModel.value" range class="m-4" :min="minltpValue" :max="maxltpValue"></Slider>
-       <div class="flex items-center justify-between px-2">
-         <span>{{ filterModel.value ? filterModel.value[0] : minltpValue }}</span>
-         <span>{{ filterModel.value ? filterModel.value[1] : maxltpValue }}</span>
-       </div>
-     </template>
-   </Column>
-   <Column class="cursor-pointer"  v-if="visibleColumns.includes('invamt')" sortable field="invamt" header="INV"  :showFilterOperator="false" :showFilterMatchModes="false">
-     <template #body="{ data }">
-       <span @click="rightcanva(data)">{{ data.invamt }}</span>
-     </template>
-     <template #filter="{ filterModel }">
-       <Slider v-model="filterModel.value" range class="m-4" :min="mininvValue" :max="maxinvValue"></Slider>
-       <div class="flex items-center justify-between px-2">
-         <span>{{ filterModel.value ? filterModel.value[0] : mininvValue }}</span>
-         <span>{{ filterModel.value ? filterModel.value[1] : maxinvValue }}</span>
-       </div>
-     </template>
-   </Column>
-   <Column class="cursor-pointer"  v-if="visibleColumns.includes('mktval')"  field="mktval" sortable header="Mktval":showFilterOperator="false" :showFilterMatchModes="false">
-     <template #body="{ data }">
-       <span @click="rightcanva(data)">{{ data.mktval }}</span>
-     </template>
-     <template #filter="{ filterModel }">
-       <Slider v-model="filterModel.value" range class="m-4" :min="minmktValue" :max="maxmktValue"></Slider>
-       <div class="flex items-center justify-between px-2">
-         <span>{{ filterModel.value ? filterModel.value[0] : minmktValue }}</span>
-         <span>{{ filterModel.value ? filterModel.value[1] : maxmktValue }}</span>
-       </div>
-     </template>
-   </Column>
-   <Column class="cursor-pointer"  v-if="visibleColumns.includes('overall')" sortable field="overall"header="Overall"  :showFilterOperator="false" :showFilterMatchModes="false">
-     <template #body="{ data }">
-       <span @click="rightcanva(data)">{{ data.overall }}</span>
-     </template>
-     <template #filter="{ filterModel }">
-       <Slider v-model="filterModel.value" range class="m-4" :min="minoverValue" :max="maxoverValue"></Slider>
-       <div class="flex items-center justify-between px-2">
-         <span>{{ filterModel.value ? filterModel.value[0] : minoverValue }}</span>
-         <span>{{ filterModel.value ? filterModel.value[1] : maxoverValue }}</span>
-       </div>
-     </template>
-   </Column>
-   <Column class="cursor-pointer"  v-if="visibleColumns.includes('days')"  sortable field="days" header="Days"  :showFilterOperator="false" :showFilterMatchModes="false">
-     <template #body="{ data }">
-       <span @click="rightcanva(data)"> {{ data.days }}</span>
-     </template>
-     <template #filter="{ filterModel }">
-       <Slider v-model="filterModel.value" range class="m-4" :min="mindaysValue" :max="maxdaysValue"></Slider>
-       <div class="flex items-center justify-between px-2">
-         <span>{{ filterModel.value ? filterModel.value[0] : mindaysValue }}</span>
-         <span>{{ filterModel.value ? filterModel.value[1] : maxdaysValue }}</span>
-       </div>
-     </template>
-   </Column>
-
-   </DataTable>
-  
-       
-<Drawer v-model:visible="visibleRight" header="Stock Details" position="right" class="!w-90 md:!w-80 lg:!w-[80rem] wd" >
+      </DataTable>
 
 
-<hr>
-<div class="w-full p-1 flex flex-col h-full justify-between" >
-<div class="w-full flex wrap" >
-<div class="w-2/3 p-1 b-1"  >
-<Tabs value="0">
-<TabList >
- <Tab value="0"><i class="pi pi-asterisk"></i> Activity</Tab>
- <Tab value="1"><i class="pi pi-envelope"></i> Emails</Tab>
- <Tab value="2"><i class="pi pi-comment"></i> Comments</Tab>
- <Tab value="3"><i class="pi pi-database"></i> Data</Tab>
- <Tab value="4"><i class="pi pi-list-check"></i> Tasks</Tab>
- <Tab value="5"><i class="pi pi-clipboard"></i> Notes</Tab>
- <Tab value="6"><i class="pi pi-paperclip"></i> Attachments</Tab>
-</TabList>
-<TabPanels>
-<TabPanel value="0">
- Tab-0
-</TabPanel>
-<TabPanel value="1">
-Tab-1
-</TabPanel>
-<TabPanel value="2">
- Tab-2
-</TabPanel>
-<TabPanel value="3">
-Tab-3
-</TabPanel>
-<TabPanel value="4">
- Tab-4
-</TabPanel>
-<TabPanel value="5">
-Tab-5
-</TabPanel>
-<TabPanel value="6">
-Tab-6
-</TabPanel>
-</TabPanels>
-</Tabs>
+      <Drawer v-model:visible="visibleRight" header="Stock Details" position="right" class="!w-90 md:!w-80 lg:!w-[80rem] wd">
+            <div v-if="selectedRow">
+                <div class="w-full flex gap-2">
+                    <div class="w-full p-1 bg-slate-50 rounded-lg" >
+                        <div class="w-full flex">
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">clientCode</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">{{ selectedRow.clientcode}}</span></div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">fromDate</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.fromDate }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">toDate</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.todate }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">COCD</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.cocd }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">DR_AMT</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.dr_amt }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">CR_AMT</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.cr_amt }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">VOUCHERDATEStr</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.vochd }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">VOUCHERDATE</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.voucherdate }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">SETTLEMENT_NO</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.settlement_no }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">CTRCODE</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.ctrcode }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">CTRNAME</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.ctrname }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">TRANS_TYPE</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.transtype }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">ACCOUNTCODE</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.accountcode1 }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">ACCOUNTNAME</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.accountname }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">TELNO</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.telno }}</div>
+                        </div>
+                    </div>
 
+                    <div class="w-full p-2 rounded-lg bg-slate-50">
+                        <div class="w-full flex">
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500">VOUCHERNO</span></div>
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500"></span>{{ selectedRow.voucherno }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500">NARRATION</span></div>
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500"></span>{{ selectedRow.narration }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500">BILLNO</span></div>
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500"></span>{{ selectedRow.billno }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500">CONAME</span></div>
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500"></span>{{ selectedRow.coname }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500">CHQNO</span></div>
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500"></span>{{ selectedRow.chqno }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500">EXPECTED_DATE</span></div>
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500"></span>{{ selectedRow.expecteddate }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500">TRADING_COCD</span></div>
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500"></span>{{ selectedRow.tradingcocd }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500">PANNO</span></div>
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500"></span>{{ selectedRow.panno }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500">EMAIL</span></div>
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500"></span>{{ selectedRow.email }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500">MANUALVNO</span></div>
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500"></span>{{ selectedRow.manualvno }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500">BOOKTYPECODE</span></div>
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500"></span>{{ selectedRow.booktypecode }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500">BILL_DATE</span></div>
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500"></span>{{ selectedRow.billdate }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500">FAX</span></div>
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500"></span>{{ selectedRow.fax }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500">ADDR</span></div>
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500"></span>{{ selectedRow.addr }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500">OPENINGBALANCE</span></div>
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500"></span>{{ selectedRow.openbal }}</div>
+                        </div>
+                    </div>
+                    <div class="w-full p-1 rounded-lg bg-slate-50" >
+                        <div class="w-full flex">
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">MKT_TYPE</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.mkttype }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">GROUPCODE</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.groupcode }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">KINDOFACCOUNT</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.kingdofaccount }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">BRSFLAG</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.brsflag }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">SETL_PAYINDATE</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.setlpayindate }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">LAST2SETL</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.last2setl }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">ACCOUNTCODE1</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.accountcode }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">GATEWAYID</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.gateway }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">PUNCH_TIME</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.punchtime }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">voctype</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.voctype }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">CHQIMAGEPATH</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.chqimagepath }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">TRANS_TYPE1</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.transtype1 }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">entryDateTime</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.etrydatetime }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">storeJsonStatus</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.storejson }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">storeJsonDateTime</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.storejosndatetime }}</div>
+                        </div>
+                    </div>
+                </div>
+                       
+            </div>
+        </Drawer>
+    </div>
+   </div>
 
-</div>
-<div class="w-1/3 p-1 b-1" style="border-left: 1px solid gray;">
-<p class="text-black-500 text-xl p-2 mt-3"><b>CRM-123H43</b></p>
-<hr>
-
-<div class="w-full flex justify-center items-center gap-3 p-2">
- <div class="rounded-full bg-slate-500 w-10 h-10"></div>
- <h1>{{ stockname }}</h1>
-</div>
-<hr>
-<div class="w-full mt-2">
  
-<Accordion value="0">
-<AccordionPanel value="0">
-<AccordionHeader>Details</AccordionHeader>
-<AccordionContent>
-
- <div class="w-full  flex">
-   <div class="w-full " ><span>Stock Name</span></div>
-   <div class="w-full " ><span>{{stockname}}</span></div>
- </div>
- <div class="w-full  flex">
-   <div class="w-full " ><span>Date</span></div>
-   <div class="w-full " ><span>{{dateval}}</span></div>
- </div>
- <div class="w-full  flex">
-   <div class="w-full " ><span>Quantity</span></div>
-   <div class="w-full " ><span>{{quant}}</span></div>
- </div>
- <div class="w-full  flex">
-   <div class="w-full " ><span>AVG Price</span></div>
-   <div class="w-full " ><span>{{avg}}</span></div>
- </div>
- <div class="w-full  flex">
-   <div class="w-full " ><span>LTP</span></div>
-   <div class="w-full " ><span>{{ltp}}</span></div>
- </div>
- <div class="w-full  flex">
-   <div class="w-full " ><span>INV Amount</span></div>
-   <div class="w-full " ><span>{{invamt}}</span></div>
- </div>
- <div class="w-full  flex">
-   <div class="w-full " ><span>MKT Value</span></div>
-   <div class="w-full " ><span>{{mktval}}</span></div>
- </div>
- <div class="w-full  flex">
-   <div class="w-full " ><span>Over All</span></div>
-   <div class="w-full " ><span>{{overall}}</span></div>
- </div>
- <div class="w-full  flex">
-   <div class="w-full " ><span>Days</span></div>
-   <div class="w-full " ><span>{{days}}</span></div>
- </div>
-
+  </template>
   
-</AccordionContent>
-</AccordionPanel>
-</Accordion>
-</div>
-</div>
-
-</div>
-
-
-
-<div class="w-full p-1 flex justify-center gap-2" >
-<Button label="Proceed" severity="success" @click="proceedfun" raised />
-<Button label="Cancel" severity="danger" @click="cancelfun" variant="outlined" />
-</div> 
-</div>
-</Drawer>
-
-</div>
-</template>
-
-<script setup>
-import { ref, onMounted } from 'vue';
-import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue'
-import { FilterMatchMode, FilterOperator } from '@primevue/core/api';
-
+  <script setup>
+  import { ref, onMounted } from 'vue';
+  import { useToast } from 'primevue/usetoast';
+  import { defineProps } from 'vue';
+  import Toast from 'primevue/toast';
+  import Calendar from 'primevue/calendar';
+  import { FilterMatchMode, FilterOperator } from '@primevue/core/api';
+  import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue'
+import { ChevronDownIcon } from '@heroicons/vue/20/solid'
+const isOpen = ref(false)
+const noofrows=ref(0)
 const loading=ref(true)
 const content=ref(false)
-
-const storedData = ref([]); 
-const datarows=ref([])
-const startdate = ref('0')
-const enddate = ref('0')
-const start = ref(null);
-const end = ref(null);
 const activedata=ref('days_7')
 const rangetext=ref('')
-const noofrows=ref(0)
-const filters = ref();
+  const toast = useToast();
+ 
+  const props = defineProps({ customValue: String });
 
-const formatDatee = (dateString) => {
-if (!dateString) return "";
-const [year, month, day] = dateString.split("-");
-return `${day}-${month}-${year.slice(-4)}`; // Convert yy-mm-dd to dd-mm-yy
+  const storedData = ref([]);
+  const ledgerResponseData = ref(null);
+  const filters = ref();
+
+  const minDrAmt = ref(0);
+  const maxDrAmt = ref(0);
+
+  const mincrAmt = ref(0);
+  const maxcrAmt = ref(0);
+
+  const startdate = ref('0')
+  const enddate = ref('0')
+
+  const start = ref(null);
+const end = ref(null);
+
+
+const isVisiblecustom = ref(false);
+
+const togglePopover = () => {
+  isVisiblecustom.value = !isVisiblecustom.value;
 };
 
-const formatDater = (date) => {
-return date.toLocaleDateString('en-GB').split('/').join('-'); // Format to dd-mm-yyyy
-};
-const minQuantityValue=ref('')
-const maxQuantityValue=ref('')
+  const getLedgerDate = async () => {
+    const ledgerApi = `https://backoffice.w3webtechnologies.co.in/bo-api/api-ledger-data.php?clientCode=${props.customValue}`;
+    try {
+      const response = await fetch(ledgerApi, { method: 'GET' });
+      if (!response.ok) {
+        throw new Error(`Your request failed with status ${response.status}`);
+      }
+      const data = await response.json();
+      if (data.status === 'ok') {
+        ledgerResponseData.value = data;
+        getFilteredData('days_7');
+      } else {
+        toast.add({ severity: 'error', summary: 'Error Message', detail: 'Data does not exist', life: 3000 });
+      }
+    } catch (error) {
+      toast.add({ severity: 'error', summary: 'Error Message', detail: error.message, life: 3000 });
+    } finally {
+      loading.value = false;
+      content.value=true
+    }
+  };
 
-const minavgValue=ref('')
-const maxavgValue=ref('')
+  const initFilters = () => {
+    filters.value = {
+      global: { value: null, matchMode: FilterMatchMode.CONTAINS },
+      clientcode: { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.STARTS_WITH }] },
+      cocd: { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.STARTS_WITH }] },
+      voucherdate: { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.DATE_IS }] },
+    dr_amt: { value: [minDrAmt.value, maxDrAmt.value], matchMode: FilterMatchMode.BETWEEN },
+    cr_amt: { value: [mincrAmt.value, maxcrAmt.value], matchMode: FilterMatchMode.BETWEEN },
+    settlement_no: { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.STARTS_WITH }] },
 
-const minltpValue=ref('')
-const maxltpValue=ref('')
+    };
+  };
 
-const minmktValue=ref('')
-const maxmktValue=ref('')
+  watch([minDrAmt, maxDrAmt], initFilters);
+  watch([mincrAmt, maxcrAmt], initFilters);
 
-const mininvValue=ref('')
-const maxinvValue=ref('')
-
-const minoverValue=ref('')
-const maxoverValue=ref('')
-
-const mindaysValue=ref('')
-const maxdaysValue=ref('')
+ 
+  const formatDater = (date) => {
+    return date.toLocaleDateString('en-GB').split('/').join('-'); // Format to dd-mm-yyyy
+    };
 
 
-const getdata = async () => {
-try {
-   const res = await fetch("/demo.json");
-   if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
-   const data = await res.json();
+
+    const investamount=ref('')
+    const currentvalue=ref('')
+    const overallgain=ref('')
+    const todaysgain=ref('')
+    const getFilteredData = (dateFilterValue) => {
+      if(dateFilterValue==='days_7'){
+        investamount.value='50000'
+        currentvalue.value='20000'
+        overallgain.value='30000'
+        todaysgain.value='45000'
+      }
+      else if(dateFilterValue==='days_15'){
+        investamount.value='25000'
+        currentvalue.value='26000'
+        overallgain.value='28000'
+        todaysgain.value='98000'
+      }
+      else if(dateFilterValue==='month_1'){
+        investamount.value='2000'
+        currentvalue.value='27000'
+        overallgain.value='38000'
+        todaysgain.value='55000'
+      }
+
+      else if(dateFilterValue==='months_3'){
+        investamount.value='6300'
+        currentvalue.value='42000'
+        overallgain.value='98000'
+        todaysgain.value='78000'
+      }
+
+      isVisiblecustom.value=false
+      if(dateFilterValue){
+        isOpen.value = false
+      }
+    const today = new Date();
+    today.setHours(23, 59, 59, 999);
+    let startDate = new Date(today);
+    
+    const dateRanges = {
+        'days_7': { label: '7 Days', offset: 6 },
+        'days_15': { label: '15 Days', offset: 14 },
+        'month_1': { label: '1 Month', offsetMonths: 1 },
+        'months_3': { label: '3 Months', offsetMonths: 3 }
+    };
+    
+    if (dateRanges[dateFilterValue]) {
+        rangetext.value = dateRanges[dateFilterValue].label;
+        activedata.value = dateFilterValue;
+        
+        if (dateRanges[dateFilterValue].offset !== undefined) {
+            startDate.setDate(today.getDate() - dateRanges[dateFilterValue].offset);
+        } else if (dateRanges[dateFilterValue].offsetMonths !== undefined) {
+            startDate.setMonth(today.getMonth() - dateRanges[dateFilterValue].offsetMonths);
+        }
+        
+        startDate.setHours(0, 0, 0, 0);
+        startdate.value = formatDater(startDate);
+        enddate.value = formatDater(today);
+        start.value = startDate;
+        end.value = today;
+    } else if (dateFilterValue === 'daterangefilter') {
+        const startDateVal = new Date(start.value);
+        const endDateVal = new Date(end.value);
+        startDateVal.setHours(0, 0, 0, 0);
+        endDateVal.setHours(23, 59, 59, 999);
+        
+        startdate.value = formatDater(startDateVal);
+        enddate.value = formatDater(endDateVal);
+        startDate = startDateVal;
+        today.setTime(endDateVal.getTime());
+    }
+
+    if (ledgerResponseData.value?.metaData?.DATA) {
+        storedData.value = ledgerResponseData.value.metaData.DATA.filter(item => {
+            const voucherDate = item[7] ? new Date(item[7]) : null;
+            return voucherDate && voucherDate >= startDate && voucherDate <= today;
+        }).map(item => ({
+            clientcode: item[1], cocd: item[4], dr_amt: item[5],cr_amt: item[6],voucherdate: item[7] ? new Date(item[7]) : null,
+            settlement_no: item[9],fromDate:item[2], todate:item[3], vochd:item[8], ctrcode:item[10], ctrname:item[11], transtype:item[12], voucherno:item[13], narration:item[14], billno:item[15], coname:item[16], chqno:item[17], expecteddate:item[18], 
+            tradingcocd:item[19], panno:item[20], email:item[21], manualvno:item[22], booktypecode:item[23], billdate:item[24], mkttype:item[25], groupcode:item[26], kingdofaccount:item[27], brsflag:item[28], 
+            setlpayindate:item[29], last2setl:item[30],accountcode1:item[31], gateway:item[32], punchtime:item[33], voctype:item[34], chqimagepath:item[35], transtype1:item[36], accountcode:item[37], accountname:item[38], telno:item[39], fax:item[40], addr:item[41],openbal:item[42],
+            etrydatetime:item[43], storejson:item[44], storejosndatetime:item[45]
+
+        }));
+
+        noofrows.value=storedData.value.length
+
+        if (storedData.value.length > 0) {
+            minDrAmt.value = Math.min(...storedData.value.map(item => item.dr_amt));
+            maxDrAmt.value = Math.max(...storedData.value.map(item => item.dr_amt));
+            mincrAmt.value = Math.min(...storedData.value.map(item => item.cr_amt));
+            maxcrAmt.value = Math.max(...storedData.value.map(item => item.cr_amt));
+        }
    
-  
-   storedData.value = [...data]; 
-   filtereddata('days_7')
-} catch (error) {
-   console.error("Error:", error.message);
-}
-finally{
-   loading.value=false
-   content.value=true
-}
-};
+    }
 
-const filtereddata= async (datefilterval)=>{
- 
-if (datefilterval == 'days_7') {
-
-
-rangetext.value='7 Days'
-activedata.value='days_7'
-const today = new Date();
-const sevenDaysAgo = new Date();
-sevenDaysAgo.setDate(today.getDate() - 6);
-today.setHours(0, 0, 0, 0);
-sevenDaysAgo.setHours(0, 0, 0, 0);
-startdate.value = formatDater(sevenDaysAgo);
-enddate.value = formatDater(today);
-
-start.value = sevenDaysAgo;
-end.value = today;
-const filteredData = storedData.value.filter(item => {
-   const itemDate = new Date(item.date);
-   itemDate.setHours(0, 0, 0, 0); 
-   return itemDate >= sevenDaysAgo && itemDate <= today;
-});
-
-datarows.value = filteredData; 
-noofrows.value=filteredData.length
-minQuantityValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item) => item.quantity)) : 0;
-maxQuantityValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.quantity)) : 0;
-minavgValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item) => item.avgprice)) : 0;
-maxavgValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.avgprice)) : 0;
-minltpValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item) => item.ltp)) : 0;
-maxltpValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.ltp)) : 0;
-mininvValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item) => item.invamt)) : 0;
-maxinvValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.invamt)) : 0;
-minmktValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item) => item.mktval)) : 0;
-maxmktValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.mktval)) : 0;
-minoverValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item) => item.overall)) : 0;
-maxoverValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.overall)) : 0;
-mindaysValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item) => item.days)) : 0;
-maxdaysValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.days)) : 0;
-    initFilters();
-}
-
-else if(datefilterval=='days_15'){
-   rangetext.value='15 Days'
-    activedata.value='days_15'
-   const today = new Date();
-   const fiteenDaysAgo = new Date();
-   fiteenDaysAgo.setDate(today.getDate() - 14);
-   today.setHours(0, 0, 0, 0);
-   fiteenDaysAgo.setHours(0, 0, 0, 0);
-   startdate.value = formatDater(fiteenDaysAgo);
-   enddate.value = formatDater(today);
-
-   start.value = fiteenDaysAgo;
-   end.value = today;
-   const filteredData = storedData.value.filter(item => {
-       const itemDate = new Date(item.date);
-       itemDate.setHours(0, 0, 0, 0); 
-       return itemDate >= fiteenDaysAgo && itemDate <= today;
-   });
-
-   datarows.value = filteredData; 
-   noofrows.value=filteredData.length
-   minQuantityValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item) => item.quantity)) : 0;
-maxQuantityValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.quantity)) : 0;
-minavgValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item) => item.avgprice)) : 0;
-maxavgValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.avgprice)) : 0;
-minltpValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item) => item.ltp)) : 0;
-maxltpValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.ltp)) : 0;
-mininvValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item) => item.invamt)) : 0;
-maxinvValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.invamt)) : 0;
-minmktValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item) => item.mktval)) : 0;
-maxmktValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.mktval)) : 0;
-minoverValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item) => item.overall)) : 0;
-maxoverValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.overall)) : 0;
-mindaysValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item) => item.days)) : 0;
-maxdaysValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.days)) : 0;
-    initFilters();
- 
-}
-else if(datefilterval=='month_1'){
-   rangetext.value='1 Month'
-   activedata.value='month_1'
-   const today = new Date();
-   const oneMonthAgo = new Date();
-   oneMonthAgo.setMonth(today.getMonth() - 1);
-   today.setHours(0, 0, 0, 0);
-   oneMonthAgo.setHours(0, 0, 0, 0);
-   startdate.value = formatDater(oneMonthAgo);
-   enddate.value = formatDater(today);
-
-   start.value = oneMonthAgo;
-   end.value = today;
-   const filteredData = storedData.value.filter(item => {
-       const itemDate = new Date(item.date);
-       itemDate.setHours(0, 0, 0, 0); 
-       return itemDate >= oneMonthAgo && itemDate <= today;
-   });
-
-   datarows.value = filteredData;
-   noofrows.value=filteredData.length
-   minQuantityValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item) => item.quantity)) : 0;
-maxQuantityValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.quantity)) : 0;
-minavgValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item) => item.avgprice)) : 0;
-maxavgValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.avgprice)) : 0;
-minltpValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item) => item.ltp)) : 0;
-maxltpValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.ltp)) : 0;
-mininvValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item) => item.invamt)) : 0;
-maxinvValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.invamt)) : 0;
-minmktValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item) => item.mktval)) : 0;
-maxmktValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.mktval)) : 0;
-minoverValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item) => item.overall)) : 0;
-maxoverValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.overall)) : 0;
-mindaysValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item) => item.days)) : 0;
-maxdaysValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.days)) : 0;
-    initFilters();
-}
-
-else if(datefilterval=='months_3'){
-   rangetext.value='3 Months'
-    activedata.value='months_3'
-   const today = new Date();
-   const threeMonthsAgo = new Date();
-   threeMonthsAgo.setMonth(today.getMonth() - 3); 
-   today.setHours(0, 0, 0, 0);
-   threeMonthsAgo.setHours(0, 0, 0, 0);
-
-   startdate.value = formatDater(threeMonthsAgo);
-   enddate.value = formatDater(today);
-
-   start.value = threeMonthsAgo;
-   end.value = today;
-   const filteredData = storedData.value.filter(item => {
-       const itemDate = new Date(item.date);
-       itemDate.setHours(0, 0, 0, 0);
-       return itemDate >= threeMonthsAgo && itemDate <= today;
-   });
-
-   datarows.value = filteredData; 
-   noofrows.value=filteredData.length
-   minQuantityValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item) => item.quantity)) : 0;
-maxQuantityValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.quantity)) : 0;
-minavgValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item) => item.avgprice)) : 0;
-maxavgValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.avgprice)) : 0;
-minltpValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item) => item.ltp)) : 0;
-maxltpValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.ltp)) : 0;
-mininvValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item) => item.invamt)) : 0;
-maxinvValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.invamt)) : 0;
-minmktValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item) => item.mktval)) : 0;
-maxmktValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.mktval)) : 0;
-minoverValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item) => item.overall)) : 0;
-maxoverValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.overall)) : 0;
-mindaysValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item) => item.days)) : 0;
-maxdaysValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.days)) : 0;
-    initFilters();
-}
-else if(datefilterval=='daterangefilter'){
-   if (!start.value || !end.value) {
-   console.error("Start or End date is missing!");
-   return;
-}
-
-const formattedStart = new Date(start.value);
-formattedStart.setHours(0, 0, 0, 0);
-const formattedEnd = new Date(end.value);
-formattedEnd.setHours(23, 59, 59, 999); 
-
-
-if (formattedStart > formattedEnd) {
-   console.error("Start date cannot be after end date!");
-   return;
-}
-
-try {
-   const res = await fetch("/peryear.json");
-   if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
    
-   const data = await res.json();
-  
-   startdate.value=formatDater(formattedStart)
-   enddate.value=formatDater(formattedEnd)
-   const filteredData = data.filter(item => {
-       const itemDate = new Date(item.date); 
-       return itemDate >= formattedStart && itemDate <= formattedEnd;
-   });
-   datarows.value = filteredData;
-   noofrows.value=filteredData.length
-   minQuantityValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item) => item.quantity)) : 0;
-maxQuantityValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.quantity)) : 0;
-minavgValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item) => item.avgprice)) : 0;
-maxavgValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.avgprice)) : 0;
-minltpValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item) => item.ltp)) : 0;
-maxltpValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.ltp)) : 0;
-mininvValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item) => item.invamt)) : 0;
-maxinvValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.invamt)) : 0;
-minmktValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item) => item.mktval)) : 0;
-maxmktValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.mktval)) : 0;
-minoverValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item) => item.overall)) : 0;
-maxoverValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.overall)) : 0;
-mindaysValue.value = filteredData.length > 0 ? Math.min(...filteredData.map((item) => item.days)) : 0;
-maxdaysValue.value = filteredData.length > 0 ? Math.max(...filteredData.map((item) => item.days)) : 0;
-    initFilters();
-} catch (error) {
-   console.error("Error:", error.message);
-} finally {
- 
-}
-
-}
-
-}
-
-const initFilters = () => {
-
-filters.value = {
-global: { value: null, matchMode: FilterMatchMode.CONTAINS },
-stockname: { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.STARTS_WITH }] },
-quantity: { value: [minQuantityValue.value, maxQuantityValue.value], matchMode: FilterMatchMode.BETWEEN },
-avgprice: { value:  [minavgValue.value, maxavgValue.value], matchMode: FilterMatchMode.BETWEEN },
-ltp: { value:[minltpValue.value, maxltpValue.value] , matchMode: FilterMatchMode.BETWEEN },
-invamt: { value:  [mininvValue.value, maxinvValue.value], matchMode: FilterMatchMode.BETWEEN },
-mktval: { value: [minmktValue.value, maxmktValue.value], matchMode: FilterMatchMode.BETWEEN },
-overall: { value: [minoverValue.value, maxoverValue.value], matchMode: FilterMatchMode.BETWEEN },
-days: { value: [mindaysValue.value, maxdaysValue.value], matchMode: FilterMatchMode.BETWEEN },
-date: { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.EQUALS }] },
-
-};
 };
 
-watch(minQuantityValue, maxQuantityValue, initFilters);
-watch(minavgValue,maxavgValue, initFilters);
-watch(minltpValue,maxltpValue, initFilters);
-watch(mininvValue,maxinvValue, initFilters);
-watch(minoverValue,maxoverValue, initFilters);
-watch(mindaysValue,maxdaysValue, initFilters);
-watch(minmktValue,maxmktValue, initFilters);
 
-const applyDateFilter = () => {
-if (filters.value.date.constraints[0].value) {
-let selectedDate = filters.value.date.constraints[0].value;
-filters.value.date.constraints[0].value = formatDate(selectedDate);
-}
-};
-
-const formatDate = (date) => {
-if (!date) return null;
-const d = new Date(date);
-return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
-};
-
-initFilters()
-onMounted(() => {
-getdata();
-
-});
-
+  const formatDate = (date) => {
+    if (!date) return '';
+    return new Intl.DateTimeFormat('en-GB').format(new Date(date)); // Converts to dd-mm-yyyy
+  };
 
 
 const columns = ref([
-{ field: 'stockname', header: 'STOCK NAME' },
-{ field: 'quantity', header: 'QUANTITY' },
-{ field: 'avgprice', header: 'AVG PRICE' },
-{ field: 'ltp', header: 'LTP' },
-{ field: 'invamt', header: 'INV' },
-{ field: 'mktval', header: 'MKT' },
-{ field: 'overall', header: 'OVERALL' },
-{ field: 'days', header: 'DAYS' },
-{ field: 'date', header: 'DATE' },
+{ field: 'clientcode', header: 'CLIENTCODE' },
+{ field: 'cocd', header: 'COCD' },
+{ field: 'dr_amt', header: 'DRAMT' },
+{ field: 'cr_amt', header: 'CRAMT' },
+{ field: 'voucherdate', header: 'VOUCHERDATE' },
+{ field: 'settlement_no', header: 'SETTLEMENTNO' },
+
 
 ]);
-//Initially select all columns except 'ltp', 'mktval', and 'date'
-const selectedColumns = ref(columns.value.filter(col => !['ltp', 'mktval', 'date'].includes(col.field)));
+
+const selectedColumns = ref(columns.value.filter(col => !['cr_amt', 'dr_amt'].includes(col.field)));
 const visibleColumns = ref(selectedColumns.value.map(col => col.field)); // Tracks visibility
 const showReset = ref(true); // Ensure reset is visible as some columns are unchecked initially
 
@@ -863,89 +825,21 @@ const exportCSV = () => {
 dt.value.exportCSV();
 };
 
+initFilters();
+  onMounted(() => {
+    getLedgerDate();
+  });
 
-const visibleRight = ref(false);
-const stockname=ref('')
-const dateval=ref('')
-const quant=ref('')
-const avg=ref('')
-const ltp=ref('')
-const invamt=ref('')
-const mktval=ref('')
-const overall=ref('')
-const days=ref('')
-
-const rightcanva =(dataval)=>{
-
-visibleRight.value=true
-stockname.value=dataval.stockname
-dateval.value=dataval.date
-quant.value=dataval.quantity
-avg.value=dataval.avgprice
-ltp.value=dataval.ltp
-invamt.value=dataval.invamt
-mktval.value=dataval.mktval
-overall.value=dataval.overall
-days.value=dataval.days
-}
-
-const proceedfun=async()=>{
-const formdata=new FormData()
-formdata.append('stockname', stockname.value)
-formdata.append('date', dateval.value)
-formdata.append('quantity', quant.value)
-formdata.append('averageprice', avg.value)
-formdata.append('ltp', ltp.value)
-formdata.append('invamt', invamt.value)
-formdata.append('mktval', mktval.value)
-formdata.append('overall', overall.value)
-formdata.append('days', days.value)
-const api='https://fakestoreapi.com/products'
-try {
-const res = await fetch(api,{
-method:'POST',
-body:formdata
-});
-if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
-const data = await res.json();
-toast.add({ severity: 'success', summary: 'Success Message', detail: data.id, life: 3000 });
-} catch (error) {
-console.error("Error:", error.message);
-}
-
-
-}
-
-const cancelfun=async()=>{
-
-const formdata=new FormData()
-formdata.append('stockname', stockname.value)
-formdata.append('date', dateval.value)
-formdata.append('quantity', quant.value)
-formdata.append('averageprice', avg.value)
-formdata.append('ltp', ltp.value)
-formdata.append('invamt', invamt.value)
-formdata.append('mktval', mktval.value)
-formdata.append('overall', overall.value)
-formdata.append('days', days.value)
-const api='https://fakestoreapi.com/products'
-try {
-const res = await fetch(api,{
-method:'POST',
-body:formdata
-});
-if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
-const data = await res.json();
-toast.add({ severity: 'error', summary: 'Cancel Message', detail: data.id, life: 3000 });
-} catch (error) {
-console.error("Error:", error.message);
-}
-}
-</script>
-
+const visibleRight=ref(false)
+const selectedRow = ref(null);
+  const rightcanva = (event) => {
+    selectedRow.value = event.data; // Store clicked row data
+    visibleRight.value = true;
+};
+  </script>
 <style>
 .left{
-left:663% !important;
+  left: 626% !important;
 }
 .p-checkbox-checked.p-variant-filled .p-checkbox-box{
     background-color: blue !important;
@@ -969,5 +863,23 @@ left:663% !important;
   
     box-shadow: none !important;
   }
+  .popover-box {
+  position: absolute;
+  top: 30px;
+  left: 0;
+
+  padding: 10px;
+  
+  z-index: 30;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
 
 </style>

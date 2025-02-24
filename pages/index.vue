@@ -165,7 +165,7 @@
             <ledger :customValue="clientcode" />
           </div>
           <div v-if="activeComponent === 'FA-Summary'">
-            <fasummary />
+            <fasummary :customValue="clientcode" />
           </div>
           <div v-if="activeComponent === 'Trades'">
             <trades />
@@ -194,7 +194,7 @@
 <script setup>
 import { ref } from 'vue'
 
-import ledger from '~/components/main.vue'
+import ledger from '~/components/leadger.vue'
 import fasummary from '~/components/fasummary.vue'
 import profile from '~/components/profile.vue'
 import trades from '~/components/trades.vue'
