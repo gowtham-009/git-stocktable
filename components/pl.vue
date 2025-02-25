@@ -225,7 +225,7 @@
   </div>
   
   <div class="card">
-     <DataTable ref="dt" v-model:filters="filters" :value="datarows" paginator :rows="10" removableSort dataKey="id"
+     <DataTable ref="dt"  v-model:filters="filters" :value="datarows" paginator :rows="10" removableSort dataKey="id"
      filterDisplay="menu" :loading="loading" :globalFilterFields="['stockname', 'quantity']">
      <template #paginatorstart>
              <span>No of Rows {{ noofrows }}</span>
