@@ -2,18 +2,18 @@
     <Toast />
    
     <div  class="w-full" v-if="loading">
-  <div class="p-1 space-y-4">
-  
-  
-  <div class="w-full p-4 border border-gray-300 rounded-lg">
-  <div class="h-4 w-24 bg-gray-300 rounded animate-pulse"></div>
-  <div class="mt-2 flex items-center gap-2">
-  <div class="h-4 w-40 bg-gray-300 rounded animate-pulse"></div>
-  <div class="h-6 w-6 bg-gray-300 rounded animate-pulse"></div>
-  </div>
-  </div>
-  
-  <dl class="mx-auto grid grid-cols-1 p-2 gap-px  sm:grid-cols-2 lg:grid-cols-4 border border-gray-300 rounded-lg">
+<div class="p-1 space-y-4">
+
+
+ <div class="w-full p-4 border border-gray-300 rounded-lg">
+<div class="h-4 w-24 bg-gray-300 rounded animate-pulse"></div>
+<div class="mt-2 flex items-center gap-2">
+<div class="h-4 w-40 bg-gray-300 rounded animate-pulse"></div>
+<div class="h-6 w-6 bg-gray-300 rounded animate-pulse"></div>
+</div>
+</div>
+
+<dl class="mx-auto grid grid-cols-1 p-2 gap-px  sm:grid-cols-2 lg:grid-cols-4 border border-gray-300 rounded-lg">
     <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2 bg-white px-4 py-10 sm:px-6 xl:px-8 animate-pulse">
       <dt class="h-4 w-20 bg-gray-300 rounded"></dt>
       <dd class="h-3 w-10 bg-gray-300 rounded"></dd>
@@ -35,19 +35,19 @@
       <dd class="w-full h-8 bg-gray-300 rounded"></dd>
     </div>
   </dl>
-  
-  <!-- Table Skeleton -->
-  
-  <div class="border border-gray-200 rounded-lg ">
-  
-  <div class="h-20   bg-white animate-pulse rounded-lg flex gap-2 justify-end items-center py-5 p-3">
-  <div class="h-12 w-96 bg-gray-200 animate-pulse rounded"></div>
-  <div class="h-12 w-8 bg-gray-200 animate-pulse rounded"></div>
-  <div class="h-12 w-8 bg-gray-200 animate-pulse rounded"></div>
-  </div>
-  
-  
-  
+
+<!-- Table Skeleton -->
+
+<div class="border border-gray-200 rounded-lg ">
+
+ <div class="h-20   bg-white animate-pulse rounded-lg flex gap-2 justify-end items-center py-5 p-3">
+ <div class="h-12 w-96 bg-gray-200 animate-pulse rounded"></div>
+ <div class="h-12 w-8 bg-gray-200 animate-pulse rounded"></div>
+ <div class="h-12 w-8 bg-gray-200 animate-pulse rounded"></div>
+</div>
+
+
+
    <div class="grid grid-cols-7 bg-gray-100 p-3 font-semibold">
        <div class="h-8 w-20 bg-gray-200 animate-pulse rounded"></div>
        <div class="h-8 w-20 bg-gray-200 animate-pulse rounded"></div>
@@ -57,7 +57,7 @@
        <div class="h-8 w-20 bg-gray-200 animate-pulse rounded"></div>
        <div class="h-8 w-20 bg-gray-200 animate-pulse rounded"></div>
    </div>
-  
+
    <!-- Table Rows -->
    <div class="divide-y divide-gray-200">
        <div class="grid grid-cols-7 p-3 animate-pulse">
@@ -161,16 +161,16 @@
        </div>
        
    </div>
-  </div>
-  
-  <!-- Pagination Skeleton -->
-  <div class="flex justify-center space-x-2">
+</div>
+
+<!-- Pagination Skeleton -->
+<div class="flex justify-center space-x-2">
    <div class="h-8 w-8 bg-gray-200 animate-pulse rounded-full"></div>
    <div class="h-8 w-8 bg-gray-200 animate-pulse rounded-full"></div>
    <div class="h-8 w-8 bg-gray-200 animate-pulse rounded-full"></div>
-  </div>
-  </div>
-  </div>
+</div>
+</div>
+</div>
   
    <div v-if="content">
     <div class="w-full p-1 flex gap-2 items-end">
@@ -178,7 +178,7 @@
         <div class="text-slate-500">Statement For  {{ rangetext }} </div>
         <div class="text-black-500"><span>{{ startdate }}</span> To <span>{{ enddate }}</span></div>
       </div>
-  
+
       <div>
        
         <div class="relative">
@@ -189,7 +189,7 @@
            d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
        </svg>
         </button>
-  
+
         <transition name="fade">
       <div v-if="isVisiblecustom" class="popover-box ">
         <div
@@ -210,7 +210,7 @@
                  class="rounded-md  px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-indigo-50 hover:text-black-500">3
                  Months</button>
              </div>
-  
+
              <div class="mt-3">
          <span class="text-lg "><i class="pi pi-calendar"></i> Date Range Filter</span>
          <div class="flex justify-center items-center gap-2">
@@ -227,25 +227,25 @@
         </div>
        <div class="w-full flex justify-start mt-2">
            <button @click="getFilteredData('daterangefilter')"
-  class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 
+class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 
       hover:bg-indigo-50 hover:text-black">
-  Apply filter
-  </button>
-  
+Apply filter
+</button>
+
        </div>
            </div>
-  
+
          </div>
       </div>
     </transition>
   </div>
-  
+
    
-  </div>
-  
-  
+ </div>
+
+
     </div>
-  
+
     <div class="w-full mt-2" >
       <div class="overflow-hidden rounded-lg bg-white shadow  mt-1">
       <div class="px-2 py-2 ">
@@ -275,9 +275,9 @@
       </div>
     </div>
     </div>
-  
+
     <div class="w-full p-1 mt-2" >
-  
+
       <DataTable 
       ref="dt"
        @row-click="rightcanva"
@@ -286,23 +286,23 @@
          :value="storedData"
           class="cursor-pointer"
           dataKey="id"
-         filterDisplay="menu" :loading="loading" :globalFilterFields="['SCRIP_NAME']"
+         filterDisplay="menu" :loading="loading" :globalFilterFields="['clientcode', 'cocd', 'settlement_no']"
           removableSort>
           
           <template #paginatorstart>
            <span>No of Rows {{ noofrows }}</span>
        </template>
-  
+ 
           <template #header>
      <div class="flex justify-end gap-2 items-center">
-  
+
        <IconField>
          <InputIcon>
            <i class="pi pi-search" />
          </InputIcon>
          <InputText v-model="filters['global'].value" placeholder="Search stock and company..." />
        </IconField>
-  
+
        <MultiSelect v-model="selectedColumns" :options="columns" optionLabel="header"
          @change="updateVisibleColumns" display="template" :showToggleAll="false" :dropdownIcon="null"
          class="p-0 text-white ml-2 " style="width: 42px; height: 34px; ">
@@ -321,7 +321,7 @@
            <button type="button"  @click="resetColumns"  class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 
            hover:bg-indigo-50 hover:text-black">Reset</button>
          </div>
-  
+
           
          </template>
        </MultiSelect>
@@ -338,219 +338,265 @@
    </template>
    <template #empty> No customers found. </template>
    <template #loading> Loading customers data. Please wait. </template>
-  
-   <Column v-if="visibleColumns.includes('SCRIP_NAME')" sortable field="SCRIP_NAME" header="Script Name">
-          <template #body="{ data }">
-            <div class="w-full flex justify-between">
-                <span >{{ data.SCRIP_NAME }}</span>
-                <span class="text-xs">{{ data.COMPANY_CODE }}</span>
-            </div>
-          </template>
-          <template #filter="{ filterModel }">
-          <InputText v-model="filterModel.value" type="text" placeholder="Search by ClientCode" />
-          </template>
-      </Column>
-       
-      <Column v-if="visibleColumns.includes('TRADE_NUMBER')" sortable field="TRADE_NUMBER" header="Trade Number">
-          <template #body="{ data }">
-            <span >{{ data.TRADE_NUMBER }}</span>
-          </template>
-          <template #filter="{ filterModel }">
-          <InputText v-model="filterModel.value" type="text" placeholder="Search by ClientCode" />
-          </template>
-      </Column>
 
-      <Column v-if="visibleColumns.includes('TRADETYPE')" header="Trade Type" sortable field="TRADETYPE" :filterMenuStyle="{ width: '14rem' }" >
-                <template #body="{ data }">
-                    <Tag :value="data.TRADETYPE" :severity="getSeverity(data.TRADETYPE)" />
-                </template>
-                <template #filter="{ filterModel }">
-                    <Select v-model="filterModel.value" :options="statuses" placeholder="Select One" showClear>
-                        <template #option="slotProps">
-                            <Tag :value="slotProps.option" :severity="getSeverity(slotProps.option)" />
-                        </template>
-                    </Select>
-                </template>
-            </Column>
-
-      <Column v-if="visibleColumns.includes('QUANTITY')" sortable field="QUANTITY" header="Quantity"  :showFilterOperator="false" :showFilterMatchModes="false">
-         <template #body="{ data }">
-            <span > {{ data.QUANTITY }}</span>
+        <Column v-if="visibleColumns.includes('clientcode')" sortable field="clientcode" header="Client Code">
+            <template #body="{ data }">
+            <span >{{ data.clientcode }}</span>
             </template>
             <template #filter="{ filterModel }">
-            <Slider v-model="filterModel.value" range class="m-4" :min="minqnt" :max="maxqnt"></Slider>
-            <div class="flex items-center justify-between px-2">
-                <span>{{ filterModel.value ? filterModel.value[0] : minqnt }}</span>
-                <span>{{ filterModel.value ? filterModel.value[1] : maxqnt }}</span>
-            </div>
+            <InputText v-model="filterModel.value" type="text" placeholder="Search by ClientCode" />
             </template>
-      </Column>
-
-      <Column v-if="visibleColumns.includes('PRICE')" sortable field="PRICE" header="Price" :showFilterOperator="false" :showFilterMatchModes="false">
-       
-
+        </Column>
+        <Column v-if="visibleColumns.includes('cocd')" sortable field="cocd" header="COCD">
           <template #body="{ data }">
-            <span > {{ data.PRICE }}</span>
+            <span >{{ data.cocd }}</span>
             </template>
             <template #filter="{ filterModel }">
-            <Slider v-model="filterModel.value" range class="m-4" :min="minpri" :max="maxpri"></Slider>
-            <div class="flex items-center justify-between px-2">
-                <span>{{ filterModel.value ? filterModel.value[0] : minpri }}</span>
-                <span>{{ filterModel.value ? filterModel.value[1] : maxpri }}</span>
-            </div>
+            <InputText v-model="filterModel.value" type="text" placeholder="Search by cocd" />
             </template>
-      </Column>
-       
-      <Column v-if="visibleColumns.includes('AMOUNT')" sortable field="AMOUNT" header="Amount" :showFilterOperator="false" :showFilterMatchModes="false">
-       
-
-          
-          <template #body="{ data }">
-            <span > {{ data.AMOUNT }}</span>
+        </Column>
+        <Column v-if="visibleColumns.includes('dr_amt')" sortable field="dr_amt" header="Dr_Amt" :showFilterOperator="false" :showFilterMatchModes="false">
+            <template #body="{ data }">
+            <span > {{ data.dr_amt }}</span>
             </template>
             <template #filter="{ filterModel }">
-            <Slider v-model="filterModel.value" range class="m-4" :min="minamt" :max="maxamt"></Slider>
+            <Slider v-model="filterModel.value" range class="m-4" :min="minDrAmt" :max="maxDrAmt"></Slider>
             <div class="flex items-center justify-between px-2">
-                <span>{{ filterModel.value ? filterModel.value[0] : minamt }}</span>
-                <span>{{ filterModel.value ? filterModel.value[1] : maxamt }}</span>
+                <span>{{ filterModel.value ? filterModel.value[0] : minDrAmt }}</span>
+                <span>{{ filterModel.value ? filterModel.value[1] : maxDrAmt }}</span>
             </div>
             </template>
-      </Column>
-       
-
-        <Column v-if="visibleColumns.includes('TRADE_DATEStr')" sortable field="TRADE_DATEStr" dataType="date" header="Trade Date">
+        </Column>
+        <Column v-if="visibleColumns.includes('cr_amt')" sortable field="cr_amt" header="Cr_Amt" :showFilterOperator="false" :showFilterMatchModes="false">
+            <template #body="{ data }">
+            <span > {{ data.cr_amt }}</span>
+            </template>
+            <template #filter="{ filterModel }">
+            <Slider v-model="filterModel.value" range class="m-4" :min="mincrAmt" :max="maxcrAmt"></Slider>
+            <div class="flex items-center justify-between px-2">
+                <span>{{ filterModel.value ? filterModel.value[0] : mincrAmt }}</span>
+                <span>{{ filterModel.value ? filterModel.value[1] : maxcrAmt }}</span>
+            </div>
+            </template>
+        </Column>
+        <Column v-if="visibleColumns.includes('voucherdate')" sortable field="voucherdate" dataType="date" header="Voucher Date">
           <template #body="{ data }">
-           <span> {{ formatDate(data.TRADE_DATEStr) }}</span> <span class="text-sm"> {{ data.TRADE_TIME }}</span>
+            {{ formatDate(data.voucherdate) }}
           </template>
           <template #filter="{ filterModel }">
             <Calendar v-model="filterModel.value" dateFormat="dd-mm-yy" />
           </template>
         </Column>
-  
-      
+        <Column v-if="visibleColumns.includes('settlement_no')" sortable field="settlement_no" header="Settlement No">
+            <template #body="{ data }">
+      <span >{{ data.settlement_no }}</span>
+     </template>
+     <template #filter="{ filterModel }">
+       <InputText v-model="filterModel.value" type="text" placeholder="Search by settlement no" />
+     </template>
+        </Column>
+
       </DataTable>
-  
+
 
       <Drawer v-model:visible="visibleRight" header="Stock Details" position="right" class="!w-90 md:!w-80 lg:!w-[80rem] wd">
             <div v-if="selectedRow">
                 <div class="w-full flex gap-2">
                     <div class="w-full p-1 bg-slate-50 rounded-lg" >
-                      <div class="w-full flex">
-                            <div class="w-full p-1"><span class="text-sm text-gray-500">ClientCode</span></div>
-                            <div class="w-full p-1"><span class="text-sm text-gray-500">{{ selectedRow.CLIENT_CODE}}</span></div>
-                        </div>
-
                         <div class="w-full flex">
-                            <div class="w-full p-1"><span class="text-sm text-gray-500">TradeFromDate</span></div>
-                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.tradeFromDate }}</div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">clientCode</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">{{ selectedRow.clientcode}}</span></div>
                         </div>
-
                         <div class="w-full flex">
-                            <div class="w-full p-1"><span class="text-sm text-gray-500">TradeToDate</span></div>
-                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.tradeToDate }}</div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">fromDate</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.fromDate }}</div>
                         </div>
-
                         <div class="w-full flex">
-                            <div class="w-full p-1"><span class="text-sm text-gray-500">Script Name</span></div>
-                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.SCRIP_NAME }}</div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">toDate</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.todate }}</div>
                         </div>
-
                         <div class="w-full flex">
-                            <div class="w-full p-1"><span class="text-sm text-gray-500">TRADE_NUMBER</span></div>
-                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.TRADE_NUMBER }}</div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">COCD</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.cocd }}</div>
                         </div>
-
                         <div class="w-full flex">
-                            <div class="w-full p-1"><span class="text-sm text-gray-500">TRADE_DATEStr</span></div>
-                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.TRADE_DATEStr }}</div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">DR_AMT</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.dr_amt }}</div>
                         </div>
-
                         <div class="w-full flex">
-                            <div class="w-full p-1"><span class="text-sm text-gray-500">TRADE_DATE</span></div>
-                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.TRADE_DATE }}</div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">CR_AMT</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.cr_amt }}</div>
                         </div>
-
-                       
+                        <div class="w-full flex">
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">VOUCHERDATEStr</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.vochd }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">VOUCHERDATE</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.voucherdate }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">SETTLEMENT_NO</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.settlement_no }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">CTRCODE</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.ctrcode }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">CTRNAME</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.ctrname }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">TRANS_TYPE</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.transtype }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">ACCOUNTCODE</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.accountcode1 }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">ACCOUNTNAME</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.accountname }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">TELNO</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.telno }}</div>
+                        </div>
                     </div>
 
                     <div class="w-full p-2 rounded-lg bg-slate-50">
-                      <div class="w-full flex">
-                            <div class="w-full p-1"><span class="text-sm text-gray-500">Series</span></div>
-                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.SERIES }}</div>
-                        </div>
-
                         <div class="w-full flex">
-                            <div class="w-full p-1"><span class="text-sm text-gray-500">SCRIP_SERIES</span></div>
-                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.SCRIP_SERIES }}</div>
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500">VOUCHERNO</span></div>
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500"></span>{{ selectedRow.voucherno }}</div>
                         </div>
                         <div class="w-full flex">
-                            <div class="w-full p-1"><span class="text-sm text-gray-500">OPTION_TYPE</span></div>
-                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.OPTION_TYPE }}</div>
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500">NARRATION</span></div>
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500"></span>{{ selectedRow.narration }}</div>
                         </div>
                         <div class="w-full flex">
-                            <div class="w-full p-1" ><span class="text-sm text-gray-500">COMPANY_CODE</span></div>
-                            <div class="w-full p-1" ><span class="text-sm text-gray-500"></span>{{ selectedRow.COMPANY_CODE }}</div>
-                        </div>
-
-                        <div class="w-full flex">
-                            <div class="w-full p-1"><span class="text-sm text-gray-500">TRADE_TIME</span></div>
-                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.TRADE_TIME }}</div>
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500">BILLNO</span></div>
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500"></span>{{ selectedRow.billno }}</div>
                         </div>
                         <div class="w-full flex">
-                            <div class="w-full p-1"><span class="text-sm text-gray-500">RATEPLMSBRK</span></div>
-                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.RATEPLMSBRK }}</div>
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500">CONAME</span></div>
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500"></span>{{ selectedRow.coname }}</div>
                         </div>
                         <div class="w-full flex">
-                            <div class="w-full p-1" ><span class="text-sm text-gray-500">AMOUNT</span></div>
-                            <div class="w-full p-1" ><span class="text-sm text-gray-500"></span>{{ selectedRow.AMOUNT }}</div>
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500">CHQNO</span></div>
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500"></span>{{ selectedRow.chqno }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500">EXPECTED_DATE</span></div>
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500"></span>{{ selectedRow.expecteddate }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500">TRADING_COCD</span></div>
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500"></span>{{ selectedRow.tradingcocd }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500">PANNO</span></div>
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500"></span>{{ selectedRow.panno }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500">EMAIL</span></div>
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500"></span>{{ selectedRow.email }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500">MANUALVNO</span></div>
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500"></span>{{ selectedRow.manualvno }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500">BOOKTYPECODE</span></div>
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500"></span>{{ selectedRow.booktypecode }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500">BILL_DATE</span></div>
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500"></span>{{ selectedRow.billdate }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500">FAX</span></div>
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500"></span>{{ selectedRow.fax }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500">ADDR</span></div>
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500"></span>{{ selectedRow.addr }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500">OPENINGBALANCE</span></div>
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500"></span>{{ selectedRow.openbal }}</div>
                         </div>
                     </div>
                     <div class="w-full p-1 rounded-lg bg-slate-50" >
-                      <div class="w-full flex">
-                            <div class="w-full p-1"><span class="text-sm text-gray-500">BUY_QUANTITY</span></div>
-                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.BUY_QUANTITY }}</div>
-                        </div>
-
                         <div class="w-full flex">
-                            <div class="w-full p-1"><span class="text-sm text-gray-500">BUY_PRICE</span></div>
-                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.BUY_PRICE }}</div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">MKT_TYPE</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.mkttype }}</div>
                         </div>
-
                         <div class="w-full flex">
-                            <div class="w-full p-1" ><span class="text-sm text-gray-500">SELL_QUANTITY</span></div>
-                            <div class="w-full p-1" ><span class="text-sm text-gray-500"></span>{{ selectedRow.SELL_QUANTITY }}</div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">GROUPCODE</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.groupcode }}</div>
                         </div>
-
                         <div class="w-full flex">
-                            <div class="w-full p-1"><span class="text-sm text-gray-500">SELL_PRICE</span></div>
-                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.SELL_PRICE }}</div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">KINDOFACCOUNT</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.kingdofaccount }}</div>
                         </div>
-
                         <div class="w-full flex">
-                            <div class="w-full p-1"><span class="text-sm text-gray-500">ACTUAL_AMOUNT</span></div>
-                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.ACTUAL_AMOUNT }}</div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">BRSFLAG</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.brsflag }}</div>
                         </div>
-
                         <div class="w-full flex">
-                            <div class="w-full p-1" ><span class="text-sm text-gray-500">BUY_NET_PRICE</span></div>
-                            <div class="w-full p-1" ><span class="text-sm text-gray-500"></span>{{ selectedRow.BUY_NET_PRICE }}</div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">SETL_PAYINDATE</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.setlpayindate }}</div>
                         </div>
-
                         <div class="w-full flex">
-                            <div class="w-full p-1"><span class="text-sm text-gray-500">SELL_NET_PRICE</span></div>
-                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.SELL_NET_PRICE }}</div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">LAST2SETL</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.last2setl }}</div>
                         </div>
-
+                        <div class="w-full flex">
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">ACCOUNTCODE1</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.accountcode }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">GATEWAYID</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.gateway }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">PUNCH_TIME</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.punchtime }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">voctype</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.voctype }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">CHQIMAGEPATH</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.chqimagepath }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">TRANS_TYPE1</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.transtype1 }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">entryDateTime</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.etrydatetime }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">storeJsonStatus</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.storejson }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">storeJsonDateTime</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.storejosndatetime }}</div>
+                        </div>
                     </div>
                 </div>
                        
             </div>
         </Drawer>
-    
     </div>
    </div>
-  
-  
+
+ 
   </template>
   
   <script setup>
@@ -561,45 +607,42 @@
   import Calendar from 'primevue/calendar';
   import { FilterMatchMode, FilterOperator } from '@primevue/core/api';
   import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue'
-  import { ChevronDownIcon } from '@heroicons/vue/20/solid'
-  const isOpen = ref(false)
-  const noofrows=ref(0)
-  const loading=ref(true)
-  const content=ref(false)
-  const activedata=ref('days_7')
-  const rangetext=ref('')
+import { ChevronDownIcon } from '@heroicons/vue/20/solid'
+const isOpen = ref(false)
+const noofrows=ref(0)
+const loading=ref(true)
+const content=ref(false)
+const activedata=ref('days_7')
+const rangetext=ref('')
   const toast = useToast();
-  
+ 
   const props = defineProps({ customValue: String });
-  
+
   const storedData = ref([]);
   const ledgerResponseData = ref(null);
   const filters = ref();
-  
-  const minqnt = ref(0);
-  const maxqnt = ref(0);
-  
-  const minpri = ref(0);
-  const maxpri = ref(0);
-  
-  const minamt = ref(0);
-  const maxamt = ref(0);
-  
+
+  const minDrAmt = ref(0);
+  const maxDrAmt = ref(0);
+
+  const mincrAmt = ref(0);
+  const maxcrAmt = ref(0);
+
   const startdate = ref('0')
   const enddate = ref('0')
-  
+
   const start = ref(null);
-  const end = ref(null);
-  
-  
-  const isVisiblecustom = ref(false);
-  
-  const togglePopover = () => {
+const end = ref(null);
+
+
+const isVisiblecustom = ref(false);
+
+const togglePopover = () => {
   isVisiblecustom.value = !isVisiblecustom.value;
-  };
-  
+};
+
   const getLedgerDate = async () => {
-    const ledgerApi = `https://backoffice.w3webtechnologies.co.in/bo-api/api-trades-data.php/?clientCode=${props.customValue}`;
+    const ledgerApi = `https://backoffice.w3webtechnologies.co.in/bo-api/api-ledger-data.php/?clientCode=${props.customValue}`;
     try {
       const response = await fetch(ledgerApi, { method: 'GET' });
       if (!response.ok) {
@@ -619,35 +662,30 @@
       content.value=true
     }
   };
-  
+
   const initFilters = () => {
     filters.value = {
       global: { value: null, matchMode: FilterMatchMode.CONTAINS },
-      SCRIP_NAME: { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.STARTS_WITH }] },
-      TRADE_NUMBER: { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.STARTS_WITH }] },
-     QUANTITY:{ value: [minqnt.value, maxqnt.value], matchMode: FilterMatchMode.BETWEEN },
-     PRICE: { value: [minpri.value, maxpri.value], matchMode: FilterMatchMode.BETWEEN },
-     AMOUNT: { value: [minamt.value, maxamt.value], matchMode: FilterMatchMode.BETWEEN },
+      clientcode: { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.STARTS_WITH }] },
+      cocd: { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.STARTS_WITH }] },
+      voucherdate: { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.DATE_IS }] },
+    dr_amt: { value: [minDrAmt.value, maxDrAmt.value], matchMode: FilterMatchMode.BETWEEN },
+    cr_amt: { value: [mincrAmt.value, maxcrAmt.value], matchMode: FilterMatchMode.BETWEEN },
+    settlement_no: { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.STARTS_WITH }] },
 
-      TRADETYPE: { operator: FilterOperator.OR, constraints: [{ value: null, matchMode: FilterMatchMode.EQUALS }] },
-      TRADE_DATEStr: { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.DATE_IS }] },
-      
-  
-  
     };
   };
-  
-  const statuses = ref(['BUY', 'SELL']);
 
-  watch([minqnt, maxqnt], initFilters);
-  
-  
+  watch([minDrAmt, maxDrAmt], initFilters);
+  watch([mincrAmt, maxcrAmt], initFilters);
+
+ 
   const formatDater = (date) => {
     return date.toLocaleDateString('en-GB').split('/').join('-'); // Format to dd-mm-yyyy
     };
-  
-  
-  
+
+
+
     const investamount=ref('')
     const currentvalue=ref('')
     const overallgain=ref('')
@@ -671,14 +709,14 @@
         overallgain.value='38000'
         todaysgain.value='55000'
       }
-  
+
       else if(dateFilterValue==='months_3'){
         investamount.value='6300'
         currentvalue.value='42000'
         overallgain.value='98000'
         todaysgain.value='78000'
       }
-  
+
       isVisiblecustom.value=false
       if(dateFilterValue){
         isOpen.value = false
@@ -720,127 +758,94 @@
         startDate = startDateVal;
         today.setTime(endDateVal.getTime());
     }
-  
+
     if (ledgerResponseData.value?.metaData?.DATA) {
         storedData.value = ledgerResponseData.value.metaData.DATA.filter(item => {
-            const voucherDate = item[13] ? new Date(item[13]) : null;
+            const voucherDate = item[7] ? new Date(item[7]) : null;
             return voucherDate && voucherDate >= startDate && voucherDate <= today;
         }).map(item => ({
-            SCRIP_NAME:item[3]+' - '+item[4],
-            COMPANY_CODE:item[7],
-            TRADE_DATEStr: item[13] ? new Date(item[13]) : null,
-            TRADE_TIME:item[15] ,
-            TRADE_NUMBER:item[12],
-            TRADETYPE:item[8]>0?'BUY':'SELL',
-            QUANTITY:item[8]>0 ? item[8] : item[10],
-            PRICE:item[8]>0 ? item[9] : item[11],
-            AMOUNT:item[17],
+            clientcode: item[1], cocd: item[4], dr_amt: item[5],cr_amt: item[6],voucherdate: item[7] ? new Date(item[7]) : null,
+            settlement_no: item[9],fromDate:item[2], todate:item[3], vochd:item[8], ctrcode:item[10], ctrname:item[11], transtype:item[12], voucherno:item[13], narration:item[14], billno:item[15], coname:item[16], chqno:item[17], expecteddate:item[18], 
+            tradingcocd:item[19], panno:item[20], email:item[21], manualvno:item[22], booktypecode:item[23], billdate:item[24], mkttype:item[25], groupcode:item[26], kingdofaccount:item[27], brsflag:item[28], 
+            setlpayindate:item[29], last2setl:item[30],accountcode1:item[31], gateway:item[32], punchtime:item[33], voctype:item[34], chqimagepath:item[35], transtype1:item[36], accountcode:item[37], accountname:item[38], telno:item[39], fax:item[40], addr:item[41],openbal:item[42],
+            etrydatetime:item[43], storejson:item[44], storejosndatetime:item[45]
 
-            // view
-            CLIENT_CODE:item[0], tradeFromDate:item[1], SERIES:item[4],
-            tradeToDate:item[2], SCRIP_SERIES:item[5],
-            OPTION_TYPE:item[6], BUY_QUANTITY:item[8],
-            BUY_PRICE:item[9], SELL_QUANTITY:item[10],
-            SELL_PRICE:item[11], TRADE_DATE:item[14],
-            TRADE_TIME:item[15], RATEPLMSBRK:item[16],
-            AMOUNT:item[17], ACTUAL_AMOUNT:item[18],
-            BUY_NET_PRICE:item[19], SELL_NET_PRICE:item[20]
-
-  
         }));
-  
+
         noofrows.value=storedData.value.length
+
         if (storedData.value.length > 0) {
-              minqnt.value = Math.min(...storedData.value.map(item => item.QUANTITY));
-              maxqnt.value = Math.max(...storedData.value.map(item => item.QUANTITY));
-
-              minpri.value = Math.min(...storedData.value.map(item => item.PRICE));
-              maxpri.value = Math.max(...storedData.value.map(item => item.PRICE));
-
-              minamt.value = Math.min(...storedData.value.map(item => item.AMOUNT));
-              maxamt.value = Math.max(...storedData.value.map(item => item.AMOUNT));
-          }
+            minDrAmt.value = Math.min(...storedData.value.map(item => item.dr_amt));
+            maxDrAmt.value = Math.max(...storedData.value.map(item => item.dr_amt));
+            mincrAmt.value = Math.min(...storedData.value.map(item => item.cr_amt));
+            maxcrAmt.value = Math.max(...storedData.value.map(item => item.cr_amt));
+        }
    
     }
-  
+
    
-  };
-  
-  const getSeverity = (status) => {
-    switch (status) {
-        case 'SELL':
-            return 'danger';
-
-        case 'qualified':
-            return 'success';
-
-      
-
-        case 'renewal':
-            return null;
-    }
 };
-  
+
+
   const formatDate = (date) => {
     if (!date) return '';
     return new Intl.DateTimeFormat('en-GB').format(new Date(date)); // Converts to dd-mm-yyyy
   };
-  
-  
-  const columns = ref([
-  { field: 'SCRIP_NAME', header: 'SCRIP_NAME' },
-  { field: 'TRADE_NUMBER', header: 'TRADE_NUMBER' },
-  { field: 'TRADETYPE', header: 'TRADETYPE' },
-  { field: 'TRADE_DATEStr', header: 'TRADE_DATE' },
-  { field: 'QUANTITY', header: 'QUANTITY' },
-  { field: 'PRICE', header: 'PRICE' },
-  { field: 'AMOUNT', header: 'AMOUNT' },
-  
-  
-  ]);
-  
-  const selectedColumns = ref(columns.value.filter(col => !['TRADE_DATEStr'].includes(col.field)));
-  const visibleColumns = ref(selectedColumns.value.map(col => col.field)); // Tracks visibility
-  const showReset = ref(true); // Ensure reset is visible as some columns are unchecked initially
-  
-  const updateVisibleColumns = () => {
-  visibleColumns.value = selectedColumns.value.map(col => col.field);
-  showReset.value = selectedColumns.value.length < columns.value.length; // Show Reset only when some columns are unchecked
-  };
-  
-  const resetColumns = () => {
-  selectedColumns.value = columns.value.slice(); // Reset to all columns selected
-  updateVisibleColumns(); // Ensure UI updates
-  };
-  
-  watch(selectedColumns, updateVisibleColumns, { deep: true });
-  
-  const dt = ref()
-  const exportCSV = () => {
-  dt.value.exportCSV();
-  };
-  
-  initFilters();
+
+
+const columns = ref([
+{ field: 'clientcode', header: 'CLIENTCODE' },
+{ field: 'cocd', header: 'COCD' },
+{ field: 'dr_amt', header: 'DRAMT' },
+{ field: 'cr_amt', header: 'CRAMT' },
+{ field: 'voucherdate', header: 'VOUCHERDATE' },
+{ field: 'settlement_no', header: 'SETTLEMENTNO' },
+
+
+]);
+
+const selectedColumns = ref(columns.value.filter(col => !['cr_amt', 'dr_amt'].includes(col.field)));
+const visibleColumns = ref(selectedColumns.value.map(col => col.field)); // Tracks visibility
+const showReset = ref(true); // Ensure reset is visible as some columns are unchecked initially
+
+const updateVisibleColumns = () => {
+visibleColumns.value = selectedColumns.value.map(col => col.field);
+showReset.value = selectedColumns.value.length < columns.value.length; // Show Reset only when some columns are unchecked
+};
+
+const resetColumns = () => {
+selectedColumns.value = columns.value.slice(); // Reset to all columns selected
+updateVisibleColumns(); // Ensure UI updates
+};
+
+watch(selectedColumns, updateVisibleColumns, { deep: true });
+
+const dt = ref()
+const exportCSV = () => {
+dt.value.exportCSV();
+};
+
+initFilters();
   onMounted(() => {
     getLedgerDate();
   });
-  
-  const visibleRight=ref(false)
-  const selectedRow = ref(null);
+
+const visibleRight=ref(false)
+const selectedRow = ref(null);
   const rightcanva = (event) => {
     selectedRow.value = event.data; // Store clicked row data
     visibleRight.value = true;
-  };
+};
   </script>
-  <style>
-  .left{
+<style>
+.left{
   left: 626% !important;
-  }
-  .p-checkbox-checked.p-variant-filled .p-checkbox-box{
+}
+.p-checkbox-checked.p-variant-filled .p-checkbox-box{
     background-color: blue !important;
     border: blue !important;
   }
-  
+ 
   .p-multiselect.p-variant-filled{
     background: none !important;
    
@@ -850,7 +855,7 @@
     border-radius: 5px;
    
   }
-  
+
   .p-multiselect-dropdown:hover{
     background-color: rgb(239, 239, 250);
   }
@@ -862,19 +867,19 @@
   position: absolute;
   top: 30px;
   left: 0;
-  
+
   padding: 10px;
   
   z-index: 30;
-  }
-  
-  .fade-enter-active, .fade-leave-active {
+}
+
+.fade-enter-active, .fade-leave-active {
   transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-  }
-  .fade-enter-from, .fade-leave-to {
+}
+.fade-enter-from, .fade-leave-to {
   opacity: 0;
   transform: translateY(-10px);
-  }
-  
-  
-  </style>
+}
+
+
+</style>

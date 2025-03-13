@@ -168,7 +168,7 @@
             <fasummary :customValue="clientcode" />
           </div>
           <div v-if="activeComponent === 'Trades'">
-            <trades />
+            <trades :customValue="clientcode" />
           </div>
 
           <div v-if="activeComponent === 'Profit / Loss'">
@@ -197,7 +197,7 @@ import { ref } from 'vue'
 import ledger from '~/components/leadger.vue'
 import fasummary from '~/components/fasummary.vue'
 import profile from '~/components/profile.vue'
-import trades from '~/components/refferdemo.vue'
+import trades from '~/components/trades.vue'
 import profiltloss from '~/components/pl.vue'
 import funds from '~/components/funds.vue'
 import withdraw from '~/components/withdraw.vue'
@@ -267,7 +267,7 @@ const profiledashboard = (item) => {
 
 const router = useRouter();
 const route = useRoute();
-const clientcode = ref(route.query.clientcode || 'G1BPN92Q');
+const clientcode = ref(route.query.clientcode || 'G223');
 
 
 onMounted(() => {

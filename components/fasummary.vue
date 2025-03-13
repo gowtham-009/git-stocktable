@@ -56,9 +56,11 @@
                  <ul class="mt-2">
                     <li v-for="(item, index) in viewData" :key="index">
                       <div class="w-full flex">
-                        <div class="w-2/5 p-1 text-slate-600" > {{ item[3] }} {{ item[5] }}</div>
-                        <div class="w-full p-1 text-slate-600" >{{ item[4] }}</div>
+                        <div class="w-2/5 p-1 text-slate-600" > {{ item[2] }} {{ item[4] }}</div>
+                       
+                        <div class="w-full p-1 text-slate-600" >{{ item[3] }}</div>
                       </div>
+                      <hr>
                     </li>
                 </ul> 
             </div>
