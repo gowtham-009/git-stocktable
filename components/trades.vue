@@ -341,7 +341,7 @@
   
    <Column v-if="visibleColumns.includes('SCRIP_NAME')" sortable field="SCRIP_NAME" header="Script Name">
           <template #body="{ data }">
-            <div class="w-full flex justify-between">
+            <div class="w-full flex justify-between items-center">
                 <span >{{ data.SCRIP_NAME }}</span>
                 <span class="text-xs">{{ data.COMPANY_CODE }}</span>
             </div>
