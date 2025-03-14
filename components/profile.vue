@@ -132,7 +132,25 @@
         </div>
 
         <div class="mt-2 p-1 " v-if="selectedTab === 'myaccount'">
-             
+             <div class='w-full flex p-2' >
+               <div class="w-full"> <span>Client Name: {{ clientname }}</span></div>
+               <div class="w-full"><span> Mobile NO: {{ mobileno }}</span></div>
+             </div>
+
+             <div class='w-full flex p-2' >
+               <div class="w-full"> <span>Client Emai Id:{{ orginalmail }} </span></div>
+               <div class="w-full"><span> Pan NO: {{ orginalpan }} </span></div>
+             </div>
+
+             <div class='w-full flex p-2' >
+               <div class="w-full"> <span>Client Id: {{ clientid }}</span></div>
+               <div class="w-full"> <span>MICR: {{ micrno }}</span></div>
+             </div>
+
+             <div class='w-full flex p-2' >
+               <div class="w-full"> <span>Bank Account no: {{ orginalaccno }}</span></div>
+               <div class="w-full"><span> Bank Name: {{ bankname }}</span></div>
+             </div>
         </div>
         <div class="mt-2 p-1 " v-if="selectedTab === 'company'">
             <h2 class="text-sm ">Company</h2>
@@ -166,14 +184,15 @@ import { XMarkIcon } from "@heroicons/vue/24/outline";
 const props = defineProps({ customValue: String });
 
 const clientname=ref('')
-const mobileno=ref('')
-const client_email=ref('')
-const client_pan=ref('')
-const companycode=ref('')
-const micrcode=ref('')
-const bank_accno=ref('')
-const bank_name=ref('')
 
+const mobileno=ref('')
+const orginalmail=ref('')
+
+const bankname=ref('')
+const clientid=ref('')
+const orginalpan=ref('')
+const orginalaccno=ref('')
+const micrno=ref('')
 const selectedTab = ref('myaccount');
 const changeTab = (tab) => {
     selectedTab.value = tab;
@@ -206,9 +225,45 @@ const getLedgerDate = async () => {
 
 getLedgerDate()
 
-const personaldatafun=()=>{
-    console.log(ledgerResponseData.value)
-}
+const personaldatafun = () => {
+    const values = ledgerResponseData.value.metaData.clientinfo.DATA[0];
+    clientname.value = values[1];
+
+    // Mask mobile number (keep last 4 digits)
+    const originalMobile = values[2];
+    mobileno.value = originalMobile.replace(/\d(?=\d{4})/g, 'x');
+
+    // Mask email (keep first letter and domain visible)
+    const originalEmail = values[3];
+    const emailParts = originalEmail.split("@");
+    if (emailParts.length === 2) {
+        const namePart = emailParts[0]; // Username before '@'
+        const domainPart = emailParts[1]; // Domain after '@'
+        
+        // Mask all but the first character
+        const maskedName = namePart[0] + "*".repeat(namePart.length - 1);
+        orginalmail.value = `${maskedName}@${domainPart}`;
+    } else {
+        orginalmail.value = originalEmail; // Fallback (in case of invalid email)
+    }
+
+    // Mask PAN (keep last 4 characters visible)
+    const originalPan = values[4];
+    orginalpan.value = originalPan.replace(/.(?=.{4})/g, 'X');
+
+    // Assign client ID and bank name
+    clientid.value = values[14];
+    bankname.value = values[8];
+
+    // Mask Bank Account Number (keep last 4 digits visible)
+    const originalAccNo = values[7];
+    orginalaccno.value = originalAccNo.replace(/.(?=.{4})/g, 'X');
+
+    // Mask MICR Code (keep last 4 digits visible)
+    const originalMicr = values[6];
+    micrno.value = originalMicr.replace(/.(?=.{4})/g, 'X');
+};
+
 
 </script>
 

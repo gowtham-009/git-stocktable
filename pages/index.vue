@@ -272,7 +272,7 @@ const profiledashboard = (item) => {
 
 const router = useRouter();
 const route = useRoute();
-const clientcode = ref(route.query.clientcode || 'G223');
+const clientcode = ref(route.query.clientcode || 'GGBSV06');
 
 
 onMounted(() => {
