@@ -51,7 +51,7 @@
         </div>
     </div>
 
-    <div v-if="content">
+    <div >
         <div class="flex items-center sm:hidden rounded-lg p-1" style="border: 1px solid gainsboro;">
             <select v-model="selectedTab" aria-label="Select a tab"
                 class="col-start-1 row-start-1 w-full outline-none appearance-none rounded-md bg-white py-2 pl-3 pr-8 text-base text-gray-900   ">
@@ -132,57 +132,7 @@
         </div>
 
         <div class="mt-2 p-1 " v-if="selectedTab === 'myaccount'">
-            <h1 class="text-slate-400">Profile Details</h1>
-
-            <div class="w-full mt-3">
-                <span class="text-m text-slate-400 ">Full Name</span> <br>
-                <span class="text-l">GOWTHAM RAMACHANDRAN</span>
-            </div>
-
-            <div class="w-full flex mt-3">
-                <div class="w-full p-1" >
-                    <span class="text-m text-slate-400">Gender</span> <br>
-                    <span class="text-l">Male</span>
-                </div>
-                <div class="w-full p-1" >
-                    <span class="text-m text-slate-400">Date of Birth</span> <br>
-                <span class="text-l">XX-XX-XXXX</span>
-                </div>
-                <div class="w-full p-1" >
-                    <span class="text-m text-slate-400">PAN</span> <br>
-                <span class="text-l">AUXXXXX80B</span>
-                </div>
-
-            </div>
-
-            <div class="w-full flex mt-3">
-                <div class="w-full p-1" >
-                    <span class="text-m text-slate-400">Mobile</span> <br>
-                    <span class="text-l">{{ phonenumber }}</span> <span  @click="open = true" class="inline-flex items-center rounded-md  px-1 py-1  font-medium  ring-1 ring-inset ring-green-600/20"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class=" w-4 h-4">
-                        <path d="M21.731 2.269a2.625 2.625 0 0 0-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 0 0 0-3.712ZM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 0 0-1.32 2.214l-.8 2.685a.75.75 0 0 0 .933.933l2.685-.8a5.25 5.25 0 0 0 2.214-1.32L19.513 8.2Z" />
-                        </svg>
-                        </span>
-                </div>
-                <div class="w-full p-1" >
-                    <span class="text-md text-slate-400">Email</span> <br>
-                <span class="text-l">gowthamXXXXXXXXXX@gmail.com</span>
-                </div>
-            </div>
-
-            <div class="w-full flex mt-3">
-                <div class="w-full p-1" >
-                    <span class="text-m text-slate-400">CKYC No.</span> <br>
-                    <span class="text-l">XXXXXXXXXX</span> <span class="inline-flex items-center rounded-md  px-1 py-1 bg-green-50  text-green-500  font-medium  ring-1 ring-inset ring-green-600/20 text-xs"> View
-                        </span>
-                </div>
-                <div class="w-full p-1" >
-                    <span class="text-m text-slate-400">Income Range</span> <br>
-                <span class="text-l">XXXXXX</span> <span class="inline-flex items-center rounded-md p-1  ring-1 ring-inset ring-green-600/20"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
-                        <path d="M21.731 2.269a2.625 2.625 0 0 0-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 0 0 0-3.712ZM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 0 0-1.32 2.214l-.8 2.685a.75.75 0 0 0 .933.933l2.685-.8a5.25 5.25 0 0 0 2.214-1.32L19.513 8.2Z" />
-                        </svg>
-                        </span>
-                </div>
-            </div>
+             
         </div>
         <div class="mt-2 p-1 " v-if="selectedTab === 'company'">
             <h2 class="text-sm ">Company</h2>
@@ -204,81 +154,62 @@
 
 
 
-    <TransitionRoot as="template" :show="open">
-    <Dialog class="relative " @close="open = false" style="z-index: 40 !important;">
-      <div class="fixed inset-0" />
+  
 
-      <div class="fixed inset-0 overflow-hidden">
-        <div class="absolute inset-0 overflow-hidden">
-          <div class="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
-            <TransitionChild as="template" enter="transform transition ease-in-out duration-500 sm:duration-700" enter-from="translate-x-full" enter-to="translate-x-0" leave="transform transition ease-in-out duration-500 sm:duration-700" leave-from="translate-x-0" leave-to="translate-x-full">
-              <DialogPanel class="pointer-events-auto w-screen max-w-md">
-                <div class="flex h-full flex-col overflow-y-scroll bg-white py-6 shadow-xl">
-                  <div class="px-4 sm:px-6">
-                    <div class="flex items-start justify-between">
-                      <DialogTitle class="text-base font-semibold text-gray-900">Edit Mobile Number</DialogTitle>
-                      <div class="ml-3 flex h-7 items-center">
-                        <button type="button" class="relative rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" @click="open = false">
-                          <span class="absolute -inset-2.5" />
-                          <span class="sr-only">Close panel</span>
-                          <XMarkIcon class="w-6 h-6" aria-hidden="true" />
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="relative mt-6 flex-1 px-4 sm:px-6">
-                   <div class="w-full flex items-center p-2" >
-                        <form class="w-full">
-                            <div class="w-full" >
-                                <label for="mobile" class="block text-sm/6 font-medium text-gray-900">Mobile Number</label>
-                                <div class="mt-2">
-                                <input type="text" name="mobile" v-model="mobilenumber" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" placeholder="Enter a Mobile Number" />
-                                </div>
-                            </div>
-
-                          
-                            <button type="button" @click="editmobilenumber()" class="rounded-md mt-2 w-full bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Submit</button>
-                        </form>
-                   </div>
-                  </div>
-                </div>
-              </DialogPanel>
-            </TransitionChild>
-          </div>
-        </div>
-      </div>
-    </Dialog>
-    </TransitionRoot>
-
+     
 </template>
 
 <script setup>
 import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from "@headlessui/vue";
 import { XMarkIcon } from "@heroicons/vue/24/outline";
 
-const open = ref(false);
+const props = defineProps({ customValue: String });
+
+const clientname=ref('')
+const mobileno=ref('')
+const client_email=ref('')
+const client_pan=ref('')
+const companycode=ref('')
+const micrcode=ref('')
+const bank_accno=ref('')
+const bank_name=ref('')
 
 const selectedTab = ref('myaccount');
 const changeTab = (tab) => {
     selectedTab.value = tab;
 };
 
-const phonenumber=ref('123456789')
+const ledgerResponseData=ref([])
 
-const mobilenumber=ref('')
-const editmobilenumber=()=>{
-    localStorage.setItem('mobile_number', mobilenumber.value)
-    phonenumber.value=localStorage.getItem('mobile_number')
+const getLedgerDate = async () => {
+  const ledgerApi = `https://backoffice.w3webtechnologies.co.in/bo-api/api-client-info-data.php?clientCode=${props.customValue}`;
+  try {
+    const response = await fetch(ledgerApi, { method: 'GET' });
+    if (!response.ok) {
+      throw new Error(`Your request failed with status ${response.status}`);
+    }
+    const data = await response.json();
+    if (data.status === 'ok') {
+      ledgerResponseData.value = data;
+      personaldatafun()
+
+    } else {
+      toast.add({ severity: 'error', summary: 'Error Message', detail: 'Data does not exist', life: 3000 });
+    }
+  } catch (error) {
+    console.log(error.message)
+    //toast.add({ severity: 'error', summary: 'Error Message', detail: error.message, life: 3000 });
+  } finally {
+   
+  }
+};
+
+getLedgerDate()
+
+const personaldatafun=()=>{
+    console.log(ledgerResponseData.value)
 }
 
-
-const loading=ref(true)
-const content=ref(false)
-
-setInterval(() => {
-    loading.value=false
-    content.value=true
-}, 2000);
 </script>
 
 <style scoped>

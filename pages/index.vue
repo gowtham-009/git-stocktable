@@ -171,18 +171,21 @@
             <trades :customValue="clientcode" />
           </div>
 
-          <div v-if="activeComponent === 'Profit / Loss'">
-            <profiltloss />
+          <div v-if="activeComponent === 'Brokerage Master'">
+            <Brokeragemaster :customValue="clientcode"/>
           </div>
 
-          <div v-if="activeComponent === 'Funds'">
-            <funds />
+          <div v-if="activeComponent === 'CR Sauda'">
+            <CRSauda :customValue="clientcode"/>
           </div>
-          <div v-if="activeComponent === 'Withdraw'">
-            <withdraw />
+          <div v-if="activeComponent === 'Holding'">
+            <Holding :customValue="clientcode"/>
+          </div>
+          <div class="w-full" v-if="activeComponent === 'Global Brokerage'">
+            <Global_Brokerage  :customValue="clientcode" />
           </div>
           <div class="w-full" v-if="profilepanel">
-            <profile />
+            <profile  :customValue="clientcode" />
           </div>
 
         </div>
@@ -198,9 +201,10 @@ import ledger from '~/components/leadger.vue'
 import fasummary from '~/components/fasummary.vue'
 import profile from '~/components/profile.vue'
 import trades from '~/components/trades.vue'
-import profiltloss from '~/components/pl.vue'
-import funds from '~/components/funds.vue'
-import withdraw from '~/components/withdraw.vue'
+import Brokeragemaster from '~/components/Brokeragemaster.vue'
+import CRSauda from '~/components/CRSauda.vue'
+import Holding from '~/components/Holding.vue'
+import Global_Brokerage from '~/components/Global_Brokerage.vue'
 import { onMounted } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import {
@@ -226,7 +230,7 @@ import {
   XMarkIcon,
 } from '@heroicons/vue/24/outline'
 import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/vue/20/solid'
-import Profiltloss from '~/components/profitloss.vue'
+import Profiltloss from '~/components/Brokeragemaster.vue'
 
 const profilepanel = ref(false)
 const navigation = [
@@ -234,9 +238,10 @@ const navigation = [
   { name: 'Ledger', href: '#', icon: UsersIcon, },
   { name: 'FA-Summary', href: '#', icon: UsersIcon, },
   { name: 'Trades', href: '#', icon: FolderIcon, },
-  { name: 'Profit / Loss', href: '#', icon: CalendarIcon, },
-  { name: 'Funds', href: '#', icon: DocumentDuplicateIcon, },
-  { name: 'Withdraw', href: '#', icon: ChartPieIcon, },
+  { name: 'Brokerage Master', href: '#', icon: CalendarIcon, },
+  { name: 'CR Sauda', href: '#', icon: DocumentDuplicateIcon, },
+  { name: 'Holding', href: '#', icon: ChartPieIcon, },
+  { name: 'Global Brokerage', href: '#', icon: ChartPieIcon, },
 ]
 
 const userNavigation = [

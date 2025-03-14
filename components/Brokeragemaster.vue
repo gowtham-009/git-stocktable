@@ -5,15 +5,9 @@
 <div class="p-1 space-y-4">
 
 
-<div class="w-full p-4 border border-gray-300 rounded-lg">
-<div class="h-4 w-24 bg-gray-300 rounded animate-pulse"></div>
-<div class="mt-2 flex items-center gap-2">
-<div class="h-4 w-40 bg-gray-300 rounded animate-pulse"></div>
-<div class="h-6 w-6 bg-gray-300 rounded animate-pulse"></div>
-</div>
-</div>
 
-<dl class="mx-auto grid grid-cols-1 p-2 gap-px  sm:grid-cols-2 lg:grid-cols-4 border border-gray-300 rounded-lg">
+
+<!-- <dl class="mx-auto grid grid-cols-1 p-2 gap-px  sm:grid-cols-2 lg:grid-cols-4 border border-gray-300 rounded-lg">
   <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2 bg-white px-4 py-10 sm:px-6 xl:px-8 animate-pulse">
     <dt class="h-4 w-20 bg-gray-300 rounded"></dt>
     <dd class="h-3 w-10 bg-gray-300 rounded"></dd>
@@ -34,7 +28,7 @@
     <dd class="h-3 w-10 bg-gray-300 rounded"></dd>
     <dd class="w-full h-8 bg-gray-300 rounded"></dd>
   </div>
-</dl>
+</dl> -->
 
 <!-- Table Skeleton -->
 
@@ -173,80 +167,9 @@
 </div>
 
  <div v-if="content">
-  <div class="w-full p-1 flex gap-2 items-end">
-    <div>
-      <div class="text-slate-500">Statement For  {{ rangetext }} </div>
-      <div class="text-black-500"><span>{{ startdate }}</span> To <span>{{ enddate }}</span></div>
-    </div>
-
-    <div>
-     
-      <div class="relative">
-  <button @click="togglePopover" class="p-1 border rounded-lg text-gray-500 hover:bg-indigo-50 ">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-       stroke="currentColor" class="w-6 h-6">
-       <path stroke-linecap="round" stroke-linejoin="round"
-         d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
-     </svg>
-      </button>
-
-      <transition name="fade">
-    <div v-if="isVisiblecustom" class="popover-box ">
-      <div
-         class="w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-white text-sm/6 shadow-lg ring-1 ring-gray-900/5">
-         <div class="p-4">
-           <span class="text-lg"><i class="pi pi-clock"></i> Frequently used time period</span>
-           <div class="w-full p-1 flex gap-2 pl-5">
-             <button type="button" @click="getFilteredData('days_7', close)" :class="{'bg-indigo-600 text-white': activedata === 'days_7', 'hover:bg-indigo-50 hover:text-black': activedata == 'days_7'}"
-               class="rounded-md  px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-indigo-50 hover:text-black-500">
-               7 Days</button>
-             <button type="button"  @click="getFilteredData('days_15', close)" :class="{'bg-indigo-600 text-white': activedata === 'days_15', 'hover:bg-indigo-50 hover:text-black': activedata == 'days_15'}"
-               class="rounded-md   px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-indigo-50 hover:text-black-500">15
-               Days</button>
-             <button type="button"  @click="getFilteredData('month_1', close)" :class="{'bg-indigo-600 text-white': activedata === 'month_1', 'hover:bg-indigo-50 hover:text-black': activedata == 'month_1'}"
-               class="rounded-md  px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-indigo-50 hover:text-black-500">1
-               Month</button>
-             <button type="button"  @click="getFilteredData('months_3', close)" :class="{'bg-indigo-600 text-white': activedata === 'months_3', 'hover:bg-indigo-50 hover:text-black': activedata == 'months_3'}"
-               class="rounded-md  px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-indigo-50 hover:text-black-500">3
-               Months</button>
-           </div>
-
-           <div class="mt-3">
-       <span class="text-lg "><i class="pi pi-calendar"></i> Date Range Filter</span>
-       <div class="flex justify-center items-center gap-2">
-         <div class="w-48">
-             <span>Start Date</span><br>
-             <DatePicker  v-model="start" dateFormat="dd-mm-yy" showIcon />
-         </div>
-         <span>To</span>
-         <div class="w-48">
-             <span>End Date</span><br>
-             <DatePicker v-model="end" dateFormat="dd-mm-yy" showIcon />
-         </div>
-     </div>
-      </div>
-     <div class="w-full flex justify-start mt-2">
-         <button @click="getFilteredData('daterangefilter')"
-class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 
-    hover:bg-indigo-50 hover:text-black">
-Apply filter
-</button>
-
-     </div>
-         </div>
-
-       </div>
-    </div>
-  </transition>
-</div>
-
- 
-</div>
 
 
-  </div>
-
-  <div class="w-full mt-2" >
+  <!-- <div class="w-full mt-2" >
     <div class="overflow-hidden rounded-lg bg-white shadow  mt-1">
     <div class="px-2 py-2 ">
 
@@ -274,7 +197,7 @@ Apply filter
 </dl> 
     </div>
   </div>
-  </div>
+  </div> -->
 
   <div class="w-full p-1 mt-2" >
 
@@ -286,7 +209,7 @@ Apply filter
        :value="storedData"
         class="cursor-pointer"
         dataKey="id"
-       filterDisplay="menu" :loading="loading" :globalFilterFields="['clientcode', 'COCD', 'NARRATION', 'CTRCODE', 'DR_AMT']"
+       filterDisplay="menu" :loading="loading" :globalFilterFields="['SCRIP_SYMBOL']"
         removableSort>
         
         <template #paginatorstart>
@@ -339,85 +262,122 @@ Apply filter
  <template #empty> No customers found. </template>
  <template #loading> Loading customers data. Please wait. </template>
 
-      <Column v-if="visibleColumns.includes('VOUCHERNO')" sortable field="VOUCHERNO" header="VoucherNo">
+      <Column v-if="visibleColumns.includes('FROM_PRICE')" sortable field="FROM_PRICE" header="From Price" :showFilterOperator="false" :showFilterMatchModes="false">
           <template #body="{ data }">
-          <span >{{ data.VOUCHERNO }}</span>
-          </template>
-          <template #filter="{ filterModel }">
-          <InputText v-model="filterModel.value" type="text" placeholder="Search by Vouncher no" />
-          </template>
-      </Column>
-
-      <Column v-if="visibleColumns.includes('CTRCODE')" sortable field="CTRCODE" header="Type">
-          <template #body="{ data }">
-          <span >{{ data.CTRCODE }}</span>
-          </template>
-          <template #filter="{ filterModel }">
-          <InputText v-model="filterModel.value" type="text" placeholder="Search by CTR code" />
-          </template>
-      </Column>
-      
-      <Column v-if="visibleColumns.includes('COCD')" sortable field="COCD" header="Segment">
-        <template #body="{ data }">
-          <span >{{ data.COCD }}</span>
-          </template>
-          <template #filter="{ filterModel }">
-          <InputText v-model="filterModel.value" type="text" placeholder="Search by cocd" />
-          </template>
-      </Column>
-     
-     
-      <Column v-if="visibleColumns.includes('voucherdate')" sortable field="voucherdate" dataType="date" header="Voucher Date">
-        <template #body="{ data }">
-          {{ formatDate(data.voucherdate) }}
-        </template>
-        <template #filter="{ filterModel }">
-          <Calendar v-model="filterModel.value" dateFormat="dd-mm-yy" />
-        </template>
-      </Column>
-
-      <Column v-if="visibleColumns.includes('OPENINGBALANCE')" sortable field="OPENINGBALANCE" header="Opening Balance" :showFilterOperator="false" :showFilterMatchModes="false">
-        <template #body="{ data }">
-            <span > {{ data.OPENINGBALANCE }}</span>
+            <span > {{ data.FROM_PRICE }}</span>
             </template>
             <template #filter="{ filterModel }">
-            <Slider v-model="filterModel.value" range class="m-4" :min="minob" :max="maxob"></Slider>
+            <Slider v-model="filterModel.value" range class="m-4" :min="minfpri" :max="maxfpri"></Slider>
             <div class="flex items-center justify-between px-2">
-                <span>{{ filterModel.value ? filterModel.value[0] : minob }}</span>
-                <span>{{ filterModel.value ? filterModel.value[1] : maxob }}</span>
+                <span>{{ filterModel.value ? filterModel.value[0] : minfpri }}</span>
+                <span>{{ filterModel.value ? filterModel.value[1] : maxfpri }}</span>
             </div>
             </template>
       </Column>
 
-      <Column v-if="visibleColumns.includes('DR_AMT')" sortable field="DR_AMT" header="Credit Amount" :showFilterOperator="false" :showFilterMatchModes="false">
-            <template #body="{ data }">
-            <span > {{ data.DR_AMT }}</span>
+    
+
+        <Column v-if="visibleColumns.includes('SCRIP_SYMBOL')" sortable field="SCRIP_SYMBOL" header="Script Symbol">
+          <template #body="{ data }">
+          <span >{{ data.SCRIP_SYMBOL }}</span>
+          </template>
+          <template #filter="{ filterModel }">
+          <InputText v-model="filterModel.value" type="text" placeholder="Search by ClientCode" />
+          </template>
+        </Column>
+
+     
+
+        <Column v-if="visibleColumns.includes('ONESIDEPER')" sortable field="ONESIDEPER" header="One Sideper" :showFilterOperator="false" :showFilterMatchModes="false">
+          <template #body="{ data }">
+            <span > {{ data.ONESIDEPER }}</span>
             </template>
             <template #filter="{ filterModel }">
-            <Slider v-model="filterModel.value" range class="m-4" :min="minDrAmt" :max="maxDrAmt"></Slider>
+            <Slider v-model="filterModel.value" range class="m-4" :min="minop" :max="maxop"></Slider>
             <div class="flex items-center justify-between px-2">
-                <span>{{ filterModel.value ? filterModel.value[0] : minDrAmt }}</span>
-                <span>{{ filterModel.value ? filterModel.value[1] : maxDrAmt }}</span>
+                <span>{{ filterModel.value ? filterModel.value[0] : minop }}</span>
+                <span>{{ filterModel.value ? filterModel.value[1] : maxop }}</span>
+            </div>
+            </template>
+        </Column>
+        <Column v-if="visibleColumns.includes('ONESIDEMIN')" sortable field="ONESIDEMIN" header="One Sidemin" :showFilterOperator="false" :showFilterMatchModes="false">
+          <template #body="{ data }">
+            <span > {{ data.ONESIDEMIN }}</span>
+            </template>
+            <template #filter="{ filterModel }">
+            <Slider v-model="filterModel.value" range class="m-4" :min="minom" :max="maxom"></Slider>
+            <div class="flex items-center justify-between px-2">
+                <span>{{ filterModel.value ? filterModel.value[0] : minom }}</span>
+                <span>{{ filterModel.value ? filterModel.value[1] : maxom }}</span>
+            </div>
+            </template>
+        </Column>
+     
+
+        <Column v-if="visibleColumns.includes('OTHERSIDEPER')" sortable field="OTHERSIDEPER" header="Other Sideper" :showFilterOperator="false" :showFilterMatchModes="false">
+          <template #body="{ data }">
+            <span > {{ data.ONESIDEMIN }}</span>
+            </template>
+            <template #filter="{ filterModel }">
+            <Slider v-model="filterModel.value" range class="m-4" :min="minos" :max="maxos"></Slider>
+            <div class="flex items-center justify-between px-2">
+                <span>{{ filterModel.value ? filterModel.value[0] : minos }}</span>
+                <span>{{ filterModel.value ? filterModel.value[1] : maxos }}</span>
             </div>
             </template>
         </Column>
 
-        <Column v-if="visibleColumns.includes('CR_AMT')" sortable field="CR_AMT" header="Debit Amount" :showFilterOperator="false" :showFilterMatchModes="false">
+        <Column v-if="visibleColumns.includes('OTHERSIDEMIN')" sortable field="OTHERSIDEMIN" header="Other Sidemin" :showFilterOperator="false" :showFilterMatchModes="false">
           <template #body="{ data }">
-            <span > {{ data.CR_AMT }}</span>
+            <span > {{ data.OTHERSIDEMIN }}</span>
             </template>
             <template #filter="{ filterModel }">
-            <Slider v-model="filterModel.value" range class="m-4" :min="minCrAmt" :max="maxCrAmt"></Slider>
+            <Slider v-model="filterModel.value" range class="m-4" :min="minsm" :max="maxsm"></Slider>
             <div class="flex items-center justify-between px-2">
-                <span>{{ filterModel.value ? filterModel.value[0] : minCrAmt }}</span>
-                <span>{{ filterModel.value ? filterModel.value[1] : maxCrAmt }}</span>
+                <span>{{ filterModel.value ? filterModel.value[0] : minsm }}</span>
+                <span>{{ filterModel.value ? filterModel.value[1] : maxsm }}</span>
             </div>
             </template>
       </Column>
 
-      <Column v-if="visibleColumns.includes('NARRATION')" sortable field="NARRATION" header="Narration">
-          <template #body="{ data }">
-          <span >{{ data.NARRATION }}</span>
+      <Column v-if="visibleColumns.includes('DELIVERYPER')" sortable field="DELIVERYPER" header="Delivery Per" :showFilterOperator="false" :showFilterMatchModes="false">
+        <template #body="{ data }">
+            <span > {{ data.DELIVERYPER }}</span>
+            </template>
+            <template #filter="{ filterModel }">
+            <Slider v-model="filterModel.value" range class="m-4" :min="mindp" :max="maxdp"></Slider>
+            <div class="flex items-center justify-between px-2">
+                <span>{{ filterModel.value ? filterModel.value[0] : mindp }}</span>
+                <span>{{ filterModel.value ? filterModel.value[1] : maxdp }}</span>
+            </div>
+            </template>
+      </Column>
+
+      <Column v-if="visibleColumns.includes('DELIVERYMIN')" sortable field="DELIVERYMIN" header="Delivery Min" :showFilterOperator="false" :showFilterMatchModes="false">
+        <template #body="{ data }">
+            <span > {{ data.DELIVERYMIN }}</span>
+            </template>
+            <template #filter="{ filterModel }">
+            <Slider v-model="filterModel.value" range class="m-4" :min="mindm" :max="maxdm"></Slider>
+            <div class="flex items-center justify-between px-2">
+                <span>{{ filterModel.value ? filterModel.value[0] : mindm }}</span>
+                <span>{{ filterModel.value ? filterModel.value[1] : maxdm }}</span>
+            </div>
+            </template>
+      </Column>
+
+      <Column v-if="visibleColumns.includes('COMPANY_CODE')" sortable field="COMPANY_CODE" header="Company Code" :showFilterOperator="false" :showFilterMatchModes="false">
+        <template #body="{ data }">
+          <span >{{ data.COMPANY_CODE }}</span>
+          </template>
+          <template #filter="{ filterModel }">
+          <InputText v-model="filterModel.value" type="text" placeholder="Search by ClientCode" />
+          </template>
+      </Column>
+
+      <Column v-if="visibleColumns.includes('LASTCHANGEAT')" sortable field="LASTCHANGEAT" header="Last Change Eat" :showFilterOperator="false" :showFilterMatchModes="false">
+        <template #body="{ data }">
+          <span >{{ data.LASTCHANGEAT }}</span>
           </template>
           <template #filter="{ filterModel }">
           <InputText v-model="filterModel.value" type="text" placeholder="Search by ClientCode" />
@@ -433,22 +393,33 @@ Apply filter
                     <div class="w-full p-1 bg-slate-50 rounded-lg" >
                       <div class="w-full flex">
                             <div class="w-full p-1"><span class="text-sm text-gray-500">ClientCode</span></div>
-                            <div class="w-full p-1"><span class="text-sm text-gray-500">{{ selectedRow.clientcode}}</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">{{ selectedRow.clientCode}}</span></div>
                         </div>
 
                         <div class="w-full flex">
-                            <div class="w-full p-1"><span class="text-sm text-gray-500">FromDate</span></div>
-                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.fromDate }}</div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">FROM_PRICE</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.FROM_PRICE }}</div>
                         </div>
 
                         <div class="w-full flex">
-                            <div class="w-full p-1"><span class="text-sm text-gray-500">ToDate</span></div>
-                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.todate }}</div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">TO_PRICE</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.TO_PRICE }}</div>
                         </div>
 
                         <div class="w-full flex">
-                            <div class="w-full p-1"><span class="text-sm text-gray-500">CTRCODE</span></div>
-                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.CTRCODE }}</div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">SCRIP_SYMBOL</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.SCRIP_SYMBOL }}</div>
+                        </div>
+
+                        
+                        <div class="w-full flex">
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">LASTCHANGEAT</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.LASTCHANGEAT }}</div>
+                        </div>
+
+                        <div class="w-full flex">
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">DELPER</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.DELPER }}</div>
                         </div>
 
                        
@@ -456,42 +427,66 @@ Apply filter
 
                     <div class="w-full p-2 rounded-lg bg-slate-50">
                       <div class="w-full flex">
-                            <div class="w-full p-1"><span class="text-sm text-gray-500">COCD</span></div>
-                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.COCD }}</div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">TURNOVER_TYPE</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.TURNOVER_TYPE }}</div>
                         </div>
 
                         <div class="w-full flex">
-                            <div class="w-full p-1"><span class="text-sm text-gray-500">VOUCHERDATEStr</span></div>
-                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.voucherdate }}</div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">ONESIDEPER</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.ONESIDEPER }}</div>
                         </div>
                         <div class="w-full flex">
-                            <div class="w-full p-1"><span class="text-sm text-gray-500">VOUCHERDATE</span></div>
-                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.VOUCHERDATE }}</div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">ONESIDEMIN</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.ONESIDEMIN }}</div>
                         </div>
                         <div class="w-full flex">
-                            <div class="w-full p-1" ><span class="text-sm text-gray-500">NARRATION</span></div>
-                            <div class="w-full p-1" ><span class="text-sm text-gray-500"></span>{{ selectedRow.NARRATION }}</div>
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500">OTHERSIDEPER</span></div>
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500"></span>{{ selectedRow.OTHERSIDEPER }}</div>
+                        </div>
+
+                        <div class="w-full flex">
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">DELmin</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.DELmin }}</div>
+                        </div>
+                        <div class="w-full flex">
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500">DELPERLOT</span></div>
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500"></span>{{ selectedRow.DELPERLOT }}</div>
                         </div>
                     </div>
                     <div class="w-full p-1 rounded-lg bg-slate-50" >
                       <div class="w-full flex">
-                            <div class="w-full p-1"><span class="text-sm text-gray-500">DR_AMT</span></div>
-                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.DR_AMT }}</div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">OTHERSIDEMIN</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.OTHERSIDEMIN }}</div>
                         </div>
 
                         <div class="w-full flex">
-                            <div class="w-full p-1"><span class="text-sm text-gray-500">CR_AMT</span></div>
-                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.cr_amt }}</div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">DELIVERYPER</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.DELIVERYPER }}</div>
                         </div>
 
                         <div class="w-full flex">
-                            <div class="w-full p-1" ><span class="text-sm text-gray-500">OPENINGBALANCE</span></div>
-                            <div class="w-full p-1" ><span class="text-sm text-gray-500"></span>{{ selectedRow.OPENINGBALANCE }}</div>
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500">DELIVERYMIN</span></div>
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500"></span>{{ selectedRow.DELIVERYMIN }}</div>
                         </div>
 
                         <div class="w-full flex">
                             <div class="w-full p-1"><span class="text-sm text-gray-500">EntryDateTime</span></div>
-                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.etrydatetime }}</div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.EntryDateTime }}</div>
+                        </div>
+
+                        <div class="w-full flex">
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500">IBT</span></div>
+                            <div class="w-full p-1" ><span class="text-sm text-gray-500"></span>{{ selectedRow.IBT }}</div>
+                        </div>
+
+                        <div class="w-full flex">
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">Prd_Id</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.Prd_Id }}</div>
+                        </div>
+
+                        <div class="w-full flex">
+                            <div class="w-full p-1"><span class="text-sm text-gray-500">entryDateTime</span></div>
+                            <div class="w-full p-1"><span class="text-sm text-gray-500"></span>{{ selectedRow.entryDateTime }}</div>
                         </div>
 
                     </div>
@@ -519,8 +514,7 @@ const isOpen = ref(false)
 const noofrows=ref(0)
 const loading=ref(true)
 const content=ref(false)
-const activedata=ref('days_7')
-const rangetext=ref('')
+
 const toast = useToast();
 
 const props = defineProps({ customValue: String });
@@ -529,30 +523,27 @@ const storedData = ref([]);
 const ledgerResponseData = ref(null);
 const filters = ref();
 
-const minDrAmt = ref(0);
-const maxDrAmt = ref(0);
-
-const minCrAmt = ref(0);
-const maxCrAmt = ref(0);
-
-const minob = ref(0);
-const maxob = ref(0);
-
-const startdate = ref('0')
-const enddate = ref('0')
-
-const start = ref(null);
-const end = ref(null);
-
-
 const isVisiblecustom = ref(false);
 
-const togglePopover = () => {
-isVisiblecustom.value = !isVisiblecustom.value;
-};
+const minfpri = ref(0);
+const maxfpri = ref(0);
+
+
+const minop = ref(0);
+const maxop = ref(0);
+const minom = ref(0);
+const maxom = ref(0);
+const minos = ref(0);
+const maxos = ref(0);
+const minsm = ref(0);
+const maxsm = ref(0);
+const mindp = ref(0);
+const maxdp = ref(0);
+const mindm = ref(0);
+const maxdm = ref(0);
 
 const getLedgerDate = async () => {
-  const ledgerApi = `https://backoffice.w3webtechnologies.co.in/bo-api/api-ledger-data.php?clientCode=${props.customValue}`;
+  const ledgerApi = `https://backoffice.w3webtechnologies.co.in/bo-api/api-brokerage-data.php?clientCode=${props.customValue}`;
   try {
     const response = await fetch(ledgerApi, { method: 'GET' });
     if (!response.ok) {
@@ -561,13 +552,12 @@ const getLedgerDate = async () => {
     const data = await response.json();
     if (data.status === 'ok') {
       ledgerResponseData.value = data;
-      getFilteredData('days_7');
+      getdatall()
     } else {
       toast.add({ severity: 'error', summary: 'Error Message', detail: 'Data does not exist', life: 3000 });
     }
   } catch (error) {
     console.log(error.message)
-    //toast.add({ severity: 'error', summary: 'Error Message', detail: error.message, life: 3000 });
   } finally {
     loading.value = false;
     content.value=true
@@ -577,153 +567,108 @@ const getLedgerDate = async () => {
 const initFilters = () => {
   filters.value = {
     global: { value: null, matchMode: FilterMatchMode.CONTAINS },
-    VOUCHERNO: { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.STARTS_WITH }] },
-    CTRCODE: { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.STARTS_WITH }] },
-    COCD: { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.STARTS_WITH }] },
-    voucherdate: { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.DATE_IS }] },
-    DR_AMT: { value: [minDrAmt.value, maxDrAmt.value], matchMode: FilterMatchMode.BETWEEN },
-    CR_AMT: { value: [minCrAmt.value, maxCrAmt.value], matchMode: FilterMatchMode.BETWEEN },
-   OPENINGBALANCE: { value: [minob.value, maxob.value], matchMode: FilterMatchMode.BETWEEN },
+    FROM_PRICE: { value: [minfpri.value, maxfpri.value], matchMode: FilterMatchMode.BETWEEN },
+    SCRIP_SYMBOL: { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.STARTS_WITH }] },
+    COMPANY_CODE: { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.STARTS_WITH }] },
+    LASTCHANGEAT: { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.STARTS_WITH }] },
 
-    NARRATION: { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.STARTS_WITH }] },
+    ONESIDEPER: { value: [minop.value, maxop.value], matchMode: FilterMatchMode.BETWEEN },
+    ONESIDEMIN: { value: [minom.value, maxom.value], matchMode: FilterMatchMode.BETWEEN },
+    OTHERSIDEPER: { value: [minos.value, maxos.value], matchMode: FilterMatchMode.BETWEEN },
+    OTHERSIDEMIN: { value: [minsm.value, maxsm.value], matchMode: FilterMatchMode.BETWEEN },
+    DELIVERYPER: { value: [mindp.value, maxdp.value], matchMode: FilterMatchMode.BETWEEN },
+    DELIVERYMIN: { value: [mindm.value, maxdm.value], matchMode: FilterMatchMode.BETWEEN },
+
 
 
   };
 };
+watch([minfpri, maxfpri], initFilters);
 
-watch([minDrAmt, maxDrAmt], initFilters);
-watch([minCrAmt, maxCrAmt], initFilters);
-watch([minob, maxob], initFilters);
+watch([minop, maxop], initFilters);
+watch([minom, maxom], initFilters);
+watch([minos, maxos], initFilters);
+watch([minsm, maxsm], initFilters);
+watch([mindp, maxdp], initFilters);
+watch([mindm, maxdm], initFilters);
 
-const formatDater = (date) => {
-  return date.toLocaleDateString('en-GB').split('/').join('-'); // Format to dd-mm-yyyy
-  };
+const getdatall = () => {
+  storedData.value = ledgerResponseData.value.metaData.DATA
+    .filter(item => item && item.length > 0) // Ensure item is valid and not empty
+    .map(item => ({
+      FROM_PRICE: item[1] ,TO_PRICE:item[2],
+       SCRIP_SYMBOL:item[3], TURNOVER_TYPE:item[4] ,
+        ONESIDEPER:item[5], ONESIDEMIN:item[6],
 
+        // view panel
+        clientCode:item[0],
+        OTHERSIDEPER:item[7],
+        OTHERSIDEMIN:item[8],
+        DELIVERYPER:item[9],
+        DELIVERYMIN:item[10],
+        COMPANY_CODE:item[11],
+        LASTCHANGEAT:item[12],
+        DELPER:item[13],
+        DELmin:item[14],
+        DELPERLOT:item[15],
+        IBT:item[16],
+        Prd_Id:item[17],
+        entryDateTime:item[18],
+    }));
 
+    noofrows.value=storedData.value.length
+    if (storedData.value.length > 0) {
+            minfpri.value = Math.min(...storedData.value.map(item => item.FROM_PRICE));
+            maxfpri.value = Math.max(...storedData.value.map(item => item.FROM_PRICE));
 
-  const investamount=ref('')
-  const currentvalue=ref('')
-  const overallgain=ref('')
-  const todaysgain=ref('')
-  const getFilteredData = (dateFilterValue) => {
-    if(dateFilterValue==='days_7'){
-      investamount.value='50000'
-      currentvalue.value='20000'
-      overallgain.value='30000'
-      todaysgain.value='45000'
-    }
-    else if(dateFilterValue==='days_15'){
-      investamount.value='25000'
-      currentvalue.value='26000'
-      overallgain.value='28000'
-      todaysgain.value='98000'
-    }
-    else if(dateFilterValue==='month_1'){
-      investamount.value='2000'
-      currentvalue.value='27000'
-      overallgain.value='38000'
-      todaysgain.value='55000'
-    }
-
-    else if(dateFilterValue==='months_3'){
-      investamount.value='6300'
-      currentvalue.value='42000'
-      overallgain.value='98000'
-      todaysgain.value='78000'
-    }
-
-    isVisiblecustom.value=false
-    if(dateFilterValue){
-      isOpen.value = false
-    }
-  const today = new Date();
-  today.setHours(23, 59, 59, 999);
-  let startDate = new Date(today);
-  
-  const dateRanges = {
-      'days_7': { label: '7 Days', offset: 6 },
-      'days_15': { label: '15 Days', offset: 14 },
-      'month_1': { label: '1 Month', offsetMonths: 1 },
-      'months_3': { label: '3 Months', offsetMonths: 3 }
-  };
-  
-  if (dateRanges[dateFilterValue]) {
-      rangetext.value = dateRanges[dateFilterValue].label;
-      activedata.value = dateFilterValue;
-      
-      if (dateRanges[dateFilterValue].offset !== undefined) {
-          startDate.setDate(today.getDate() - dateRanges[dateFilterValue].offset);
-      } else if (dateRanges[dateFilterValue].offsetMonths !== undefined) {
-          startDate.setMonth(today.getMonth() - dateRanges[dateFilterValue].offsetMonths);
-      }
-      
-      startDate.setHours(0, 0, 0, 0);
-      startdate.value = formatDater(startDate);
-      enddate.value = formatDater(today);
-      start.value = startDate;
-      end.value = today;
-  } else if (dateFilterValue === 'daterangefilter') {
-      const startDateVal = new Date(start.value);
-      const endDateVal = new Date(end.value);
-      startDateVal.setHours(0, 0, 0, 0);
-      endDateVal.setHours(23, 59, 59, 999);
-      
-      startdate.value = formatDater(startDateVal);
-      enddate.value = formatDater(endDateVal);
-      startDate = startDateVal;
-      today.setTime(endDateVal.getTime());
-  }
-
-  if (ledgerResponseData.value?.metaData?.DATA) {
-      storedData.value = ledgerResponseData.value.metaData.DATA.filter(item => {
-          const voucherDate = item[6] ? new Date(item[6]) : null;
-          return voucherDate && voucherDate >= startDate && voucherDate <= today;
-      }).map(item => ({
-          clientcode: item[0], COCD: item[4], voucherdate: item[6] ? new Date(item[6]) : null,  NARRATION: item[8], DR_AMT: item[9], CTRCODE:item[3],
-          fromDate:item[1], todate:item[2], voucherdaten:item[7], CR_AMT:item[10], OPENINGBALANCE:item[11],  etrydatetime:item[12], VOUCHERNO:item[5]
-
-      }));
-
-      noofrows.value=storedData.value.length
-      console.log(storedData.value)
-      if (storedData.value.length > 0) {
-            minDrAmt.value = Math.min(...storedData.value.map(item => item.DR_AMT));
-            maxDrAmt.value = Math.max(...storedData.value.map(item => item.DR_AMT));
-
-            minCrAmt.value = Math.min(...storedData.value.map(item => item.CR_AMT));
-            maxCrAmt.value = Math.max(...storedData.value.map(item => item.CR_AMT));
-
-            minob.value = Math.min(...storedData.value.map(item => item.OPENINGBALANCE));
-            maxob.value = Math.max(...storedData.value.map(item => item.OPENINGBALANCE));
+         
            
+            minop.value = Math.min(...storedData.value.map(item => item.ONESIDEPER));
+            maxop.value = Math.max(...storedData.value.map(item => item.ONESIDEPER));
+           
+            minom.value = Math.min(...storedData.value.map(item => item.ONESIDEMIN));
+            maxom.value = Math.max(...storedData.value.map(item => item.ONESIDEMIN));
+           
+            minos.value = Math.min(...storedData.value.map(item => item.OTHERSIDEPER));
+            maxos.value = Math.max(...storedData.value.map(item => item.OTHERSIDEPER));
+           
+            minsm.value = Math.min(...storedData.value.map(item => item.OTHERSIDEMIN));
+            maxsm.value = Math.max(...storedData.value.map(item => item.OTHERSIDEMIN));
+           
+            mindp.value = Math.min(...storedData.value.map(item => item.DELIVERYPER));
+            maxdp.value = Math.max(...storedData.value.map(item => item.DELIVERYPER));
+           
+            mindm.value = Math.min(...storedData.value.map(item => item.DELIVERYMIN));
+            maxdm.value = Math.max(...storedData.value.map(item => item.DELIVERYMIN));
+           
+         
         }
- 
-  }
-
- 
 };
 
 
-const formatDate = (date) => {
-  if (!date) return '';
-  return new Intl.DateTimeFormat('en-GB').format(new Date(date)); // Converts to dd-mm-yyyy
-};
+
+
 
 
 const columns = ref([
-{ field: 'VOUCHERNO', header: 'Voucherno' },
-{ field: 'COCD', header: 'Type' },
-{ field: 'CTRCODE', header: 'Segment' },
-{ field: 'voucherdate', header: 'Voucher date' },
-{ field: 'NARRATION', header: 'Narration' },
-{ field: 'DR_AMT', header: 'Credit amount' },
-{ field: 'CR_AMT', header: 'Debit amount' },
-{ field: 'OPENINGBALANCE', header: 'OPENINGBALANCE' },
+{ field: 'FROM_PRICE', header: 'FROM_PRICE' },
+{ field: 'SCRIP_SYMBOL', header: 'SCRIP_SYMBOL' },
+
+{ field: 'ONESIDEPER', header: 'ONESIDEPER' },
+{ field: 'ONESIDEMIN', header: 'ONESIDEMIN' },
+{ field: 'OTHERSIDEPER', header: 'OTHERSIDEPER' },
+{ field: 'OTHERSIDEMIN', header: 'OTHERSIDEMIN' },
+{ field: 'DELIVERYPER', header: 'DELIVERYPER' },
+{ field: 'DELIVERYMIN', header: 'DELIVERYMIN' },
+
+{ field: 'COMPANY_CODE', header: 'COMPANY_CODE' },
+{ field: 'LASTCHANGEAT', header: 'LASTCHANGEAT' },
+
 
 
 ]);
 
-const selectedColumns = ref(columns.value.filter(col => !['OPENINGBALANCE','NARRATION'].includes(col.field)));
+const selectedColumns = ref(columns.value.filter(col => !['FROM_PRICE', 'ONESIDEPER', 'ONESIDEMIN','DELIVERYMIN', 'LASTCHANGEAT'].includes(col.field)));
 const visibleColumns = ref(selectedColumns.value.map(col => col.field)); // Tracks visibility
 const showReset = ref(true); // Ensure reset is visible as some columns are unchecked initially
 

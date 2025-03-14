@@ -613,7 +613,8 @@
         toast.add({ severity: 'error', summary: 'Error Message', detail: 'Data does not exist', life: 3000 });
       }
     } catch (error) {
-      toast.add({ severity: 'error', summary: 'Error Message', detail: error.message, life: 3000 });
+      console.log(error.message)
+      //toast.add({ severity: 'error', summary: 'Error Message', detail: error.message, life: 3000 });
     } finally {
       loading.value = false;
       content.value=true
@@ -640,6 +641,9 @@
   const statuses = ref(['BUY', 'SELL']);
 
   watch([minqnt, maxqnt], initFilters);
+  watch([minpri, maxpri], initFilters);
+  
+  watch([minamt, maxamt], initFilters);
   
   
   const formatDater = (date) => {

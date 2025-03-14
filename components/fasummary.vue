@@ -100,7 +100,8 @@ const getSummarydata = async () => {
             }
         }
     } catch (error) {
-        toast.add({ severity: 'error', summary: 'Error Message', detail: error.message, life: 3000 });
+        console.log(error.message)
+       // toast.add({ severity: 'error', summary: 'Error Message', detail: error.message, life: 3000 });
     }
     finally{
         loading.value=false
