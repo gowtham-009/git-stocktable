@@ -601,7 +601,15 @@ const minnp = ref(0);
 const maxnp = ref(0);
 
 
-const props = defineProps({ customValue: String });
+const props = defineProps({
+  clientcode: String,
+  token: String,
+  session: String,
+  auth: String
+
+});
+
+
 
 const storedData = ref([]);
 const ledgerResponseData = ref(null);
@@ -612,9 +620,21 @@ const isVisiblecustom = ref(false);
 
 
 const getLedgerDate = async () => {
-  const ledgerApi = `https://backoffice.w3webtechnologies.co.in/bo-api/api-crsauda-data.php/?clientCode=${props.customValue}`;
+  const formdata=new FormData()
+  formdata.append('clientCode',props.clientcode)
+  const ledgerApi = 'https://backoffice.w3webtechnologies.co.in/bo-api/api-crsauda-data.php/';
   try {
-    const response = await fetch(ledgerApi, { method: 'GET' });
+    const response = await fetch(ledgerApi, { 
+      method: 'POST',
+      headers: {
+        'Authorization':props.auth,
+        'X-Token':props.token,
+        'X-Session':props.session,
+        'X-Client':props.clientcode
+      },
+      body:formdata
+      
+     });
     if (!response.ok) {
       throw new Error(`Your request failed with status ${response.status}`);
     }

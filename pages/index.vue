@@ -82,9 +82,9 @@ const isAuthenticated = ref(false);
 onBeforeMount(() => {
   const token = localStorage.getItem('token');
   const sessionkey=localStorage.getItem('sessionkey')
-  const clientcode=localStorage.getItem('clientcode')
 
-  if (!token && !sessionkey && !clientcode) {
+
+  if (!token && !sessionkey) {
     router.replace('/');
     isAuthenticated.value = true;
   } else {
@@ -149,9 +149,10 @@ const sendClientCode = async () => {
       otpbox.value=true
       otptoken.value=data.otpToken
       toast.add({ severity: 'success', summary: 'OTP', detail: data.otpcode, group: 'br', life: 6000 });
-
-   
-
+    }
+    else{
+      
+      toast.add({ severity: 'error', summary: 'Error Message', detail: data.message, group: 'br', life: 3000 });
     }
     
   } catch (error) {

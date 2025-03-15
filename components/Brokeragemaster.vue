@@ -517,7 +517,14 @@ const content=ref(false)
 
 const toast = useToast();
 
-const props = defineProps({ customValue: String });
+const props = defineProps({
+  clientcode: String,
+  token: String,
+  session: String,
+  auth: String
+
+});
+
 
 const storedData = ref([]);
 const ledgerResponseData = ref(null);
@@ -543,9 +550,22 @@ const mindm = ref(0);
 const maxdm = ref(0);
 
 const getLedgerDate = async () => {
-  const ledgerApi = `https://backoffice.w3webtechnologies.co.in/bo-api/api-brokerage-data.php?clientCode=${props.customValue}`;
+  const ledgerApi = 'https://backoffice.w3webtechnologies.co.in/bo-api/api-brokerage-data.php';
+  const formdata=new FormData()
+  formdata.append('clientCode',props.clientcode)
+
   try {
-    const response = await fetch(ledgerApi, { method: 'GET' });
+    const response = await fetch(ledgerApi,
+     { 
+      method: 'POST',
+      headers: {
+        'Authorization':props.auth,
+        'X-Token':props.token,
+        'X-Session':props.session,
+        'X-Client':props.clientcode
+      },
+      body:formdata
+    });
     if (!response.ok) {
       throw new Error(`Your request failed with status ${response.status}`);
     }

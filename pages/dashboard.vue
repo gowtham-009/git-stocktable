@@ -165,27 +165,27 @@
               <ledger :clientcode="clientcode" :token="token" :session="session" :auth="auth" />
             </div>
             <div v-if="activeComponent === 'FA-Summary'">
-              <fasummary :customValue="clientcode" />
+              <fasummary :clientcode="clientcode" :token="token" :session="session" :auth="auth" />
             </div>
             <div v-if="activeComponent === 'Trades'">
-              <trades :customValue="clientcode" />
+              <trades :clientcode="clientcode" :token="token" :session="session" :auth="auth" />
             </div>
 
             <div v-if="activeComponent === 'Brokerage Master'">
-              <Brokeragemaster :customValue="clientcode" />
+              <Brokeragemaster :clientcode="clientcode" :token="token" :session="session" :auth="auth" />
             </div>
 
             <div v-if="activeComponent === 'CR Sauda'">
-              <CRSauda :customValue="clientcode" />
+              <CRSauda :clientcode="clientcode" :token="token" :session="session" :auth="auth" />
             </div>
             <div v-if="activeComponent === 'Holding'">
-              <Holding :customValue="clientcode" />
+              <Holding :clientcode="clientcode" :token="token" :session="session" :auth="auth" />
             </div>
             <div class="w-full" v-if="activeComponent === 'Global Brokerage'">
-              <Global_Brokerage :customValue="clientcode" />
+              <Global_Brokerage :clientcode="clientcode" :token="token" :session="session" :auth="auth" />
             </div>
             <div class="w-full" v-if="profilepanel">
-              <profile :customValue="clientcode" />
+              <profile :clientcode="clientcode" :token="token" :session="session" :auth="auth" />
             </div>
 
           </div>
@@ -206,8 +206,8 @@ import Brokeragemaster from '~/components/Brokeragemaster.vue'
 import CRSauda from '~/components/CRSauda.vue'
 import Holding from '~/components/Holding.vue'
 import Global_Brokerage from '~/components/Global_Brokerage.vue'
-import { onMounted } from "vue";
-import { useRoute, useRouter } from "vue-router";
+
+import { useRouter } from "vue-router";
 import {
   Dialog,
   DialogPanel,
@@ -231,17 +231,33 @@ import {
   XMarkIcon,
 } from '@heroicons/vue/24/outline'
 import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/vue/20/solid'
+const clientcode = ref('');
+const token = ref('');
+const session = ref('');
+const auth = ref('');
+
+
+
 
 
 const isAuthenticated = ref(false);
 const router = useRouter();
 
-onBeforeMount(() => {
-  const token = localStorage.getItem('token');
-  const sessionkey = localStorage.getItem('sessionkey')
-  const clientcode = localStorage.getItem('clientcode')
 
-  if (!token || !sessionkey || !clientcode) {
+
+onBeforeMount(() => {
+  const tokentval = localStorage.getItem('token');
+  const sessionval = localStorage.getItem('sessionkey')
+  const clinetcodeval = localStorage.getItem('clientcode')
+
+  const authval='F2CB3616F1EC269F0BF328CB77FEE4EFCDF5450D7BD21A94721C2F4E49E88F83A4FCE196070903C1BDCAA25F08F037538567D785FC56D139C09A6EC7927D5EFE'
+
+ clientcode.value=clinetcodeval
+token.value=tokentval
+session.value=sessionval
+auth.value=authval
+
+  if (!tokentval || !sessionval || !clinetcodeval) {
     router.replace('/');
   } else {
     isAuthenticated.value = true;
@@ -290,12 +306,6 @@ const profiledashboard = (item) => {
   }
 }
 
-
-
-const clientcode = ref(localStorage.getItem('clientcode'));
-const token = ref(localStorage.getItem('token'));
-const session = ref(localStorage.getItem('sessionkey'));
-const auth = ref('F2CB3616F1EC269F0BF328CB77FEE4EFCDF5450D7BD21A94721C2F4E49E88F83A4FCE196070903C1BDCAA25F08F037538567D785FC56D139C09A6EC7927D5EFE');
 
 
 
