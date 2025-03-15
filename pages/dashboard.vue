@@ -314,6 +314,51 @@ const profiledashboard = (item) => {
 
 
 
+const sessioncheckup = async () => {
+ 
+const apiUrl = 'https://backoffice.w3webtechnologies.co.in/bo-api/api-session-data.php';
+const authorization = 'F2CB3616F1EC269F0BF328CB77FEE4EFCDF5450D7BD21A94721C2F4E49E88F83A4FCE196070903C1BDCAA25F08F037538567D785FC56D139C09A6EC7927D5EFE';
+const formData = new FormData();
+formData.append('clientCode', localStorage.getItem('clientcode'));
+
+try {
+  const response = await fetch(apiUrl, {
+    method: 'POST',
+    headers: {
+      'Authorization':authorization,
+      'X-Token':localStorage.getItem('token'),
+      'X-Session': localStorage.getItem('sessionkey'),
+      'X-Client':localStorage.getItem('clientcode')
+    },
+    body: formData,
+  });
+
+  if (!response.ok) {
+    throw new Error(`Request failed with status ${response.status}`);
+  }
+
+  const data = await response.json();
+  if(data.status=='ok'){
+  console.log('page-active')
+  }
+  else{
+    const token = localStorage.removeItem('token');
+  const sessionkey = localStorage.removeItem('sessionkey')
+  const clientcode = localStorage.removeItem('clientcode')
+  if (!token || !sessionkey || !clientcode) {
+    router.replace('/');
+  }
+  }
+  
+} catch (error) {
+  console.error( error);
+}
+};
+
+setInterval(() => {
+sessioncheckup()
+}, 300000);
+
 
 
 </script>
