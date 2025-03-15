@@ -493,7 +493,10 @@ const getdatall = () => {
   storedData.value = ledgerResponseData.value.metaData.DATA
     .filter(item => item && item.length > 0) // Ensure item is valid and not empty
     .map(item => ({
-      SCRIP_NAME: item[1], 
+      SCRIP_NAME: item[1].split(" ") // Split the string into words
+  .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()) // Capitalize first letter
+  .join(" "),
+
       ISIN:item[2],
       FreeQTY:item[3],
       SCRIP_VALUE:item[4],
