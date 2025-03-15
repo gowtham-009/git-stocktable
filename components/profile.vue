@@ -138,7 +138,7 @@
              </div>
 
              <div class='w-full flex p-2' >
-               <div class="w-full"> <span>Client Emai Id:{{ orginalmail }} </span></div>
+               <div class="w-full"> <span>Client Emai Id: {{ orginalmail }} </span></div>
                <div class="w-full"><span> Pan NO: {{ orginalpan }} </span></div>
              </div>
 
@@ -236,8 +236,8 @@ const getLedgerDate = async () => {
       toast.add({ severity: 'error', summary: 'Error Message', detail: 'Data does not exist', life: 3000 });
     }
   } catch (error) {
-    console.log(error.message)
-    //toast.add({ severity: 'error', summary: 'Error Message', detail: error.message, life: 3000 });
+   
+    toast.add({ severity: 'error', summary: 'Error Message', detail: error.message, life: 3000 });
   } finally {
    
   }

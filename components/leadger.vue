@@ -296,12 +296,10 @@ Apply filter
         <template #header>
    <div class="flex justify-end gap-2 items-center">
 
-     <IconField>
-       <InputIcon>
-         <i class="pi pi-search" />
-       </InputIcon>
+  
+      
        <InputText v-model="filters['global'].value" placeholder="Search stock and company..." />
-     </IconField>
+   
 
      <MultiSelect v-model="selectedColumns" :options="columns" optionLabel="header"
        @change="updateVisibleColumns" display="template" :showToggleAll="false" :dropdownIcon="null"
@@ -713,7 +711,7 @@ const formatDater = (date) => {
       }));
 
       noofrows.value=storedData.value.length
-      console.log(storedData.value)
+   
       if (storedData.value.length > 0) {
             minDrAmt.value = Math.min(...storedData.value.map(item => item.DR_AMT));
             maxDrAmt.value = Math.max(...storedData.value.map(item => item.DR_AMT));

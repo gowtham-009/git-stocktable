@@ -184,9 +184,17 @@
             <div class="w-full" v-if="activeComponent === 'Global Brokerage'">
               <Global_Brokerage :clientcode="clientcode" :token="token" :session="session" :auth="auth" />
             </div>
+
+            <div class="w-full" v-if="activeComponent === 'Payin'">
+             <Payin/>
+            </div>
+            <div class="w-full" v-if="activeComponent === 'Payout'">
+             <Payout/>
+            </div>
             <div class="w-full" v-if="profilepanel">
               <profile :clientcode="clientcode" :token="token" :session="session" :auth="auth" />
             </div>
+           
 
           </div>
         </main>
@@ -207,6 +215,8 @@ import CRSauda from '~/components/CRSauda.vue'
 import Holding from '~/components/Holding.vue'
 import Global_Brokerage from '~/components/Global_Brokerage.vue'
 
+import Payin from '~/components/payin.vue'
+import Payout from '~/components/payout.vue'
 import { useRouter } from "vue-router";
 import {
   Dialog,
@@ -261,6 +271,10 @@ auth.value=authval
     router.replace('/');
   } else {
     isAuthenticated.value = true;
+
+    setInterval(() => {
+sessioncheckup()
+}, 300000);
   }
 });
 const profilepanel = ref(false)
@@ -273,7 +287,10 @@ const navigation = [
   { name: 'CR Sauda', href: '#', icon: DocumentDuplicateIcon, },
   { name: 'Holding', href: '#', icon: ChartPieIcon, },
   { name: 'Global Brokerage', href: '#', icon: ChartPieIcon, },
+  { name: 'Payin', href: '#', icon: ChartPieIcon, },
+  { name: 'Payout', href: '#', icon: ChartPieIcon, },
 ]
+
 
 const userNavigation = [
   { name: 'Your profile', href: '#' },
@@ -355,9 +372,7 @@ try {
 }
 };
 
-setInterval(() => {
-sessioncheckup()
-}, 300000);
+
 
 
 

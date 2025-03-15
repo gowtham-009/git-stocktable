@@ -219,12 +219,9 @@
         <template #header>
    <div class="flex justify-end gap-2 items-center">
 
-     <IconField>
-       <InputIcon>
-         <i class="pi pi-search" />
-       </InputIcon>
+    
        <InputText v-model="filters['global'].value" placeholder="Search stock and company..." />
-     </IconField>
+   
 
      <MultiSelect v-model="selectedColumns" :options="columns" optionLabel="header"
        @change="updateVisibleColumns" display="template" :showToggleAll="false" :dropdownIcon="null"

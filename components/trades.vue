@@ -296,12 +296,8 @@
           <template #header>
      <div class="flex justify-end gap-2 items-center">
   
-       <IconField>
-         <InputIcon>
-           <i class="pi pi-search" />
-         </InputIcon>
          <InputText v-model="filters['global'].value" placeholder="Search stock and company..." />
-       </IconField>
+  
   
        <MultiSelect v-model="selectedColumns" :options="columns" optionLabel="header"
          @change="updateVisibleColumns" display="template" :showToggleAll="false" :dropdownIcon="null"
@@ -560,8 +556,7 @@
   import Toast from 'primevue/toast';
   import Calendar from 'primevue/calendar';
   import { FilterMatchMode, FilterOperator } from '@primevue/core/api';
-  import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue'
-  import { ChevronDownIcon } from '@heroicons/vue/20/solid'
+  
   const isOpen = ref(false)
   const noofrows=ref(0)
   const loading=ref(true)
