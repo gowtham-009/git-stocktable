@@ -745,8 +745,8 @@ const props = defineProps({
             const voucherDate = item[13] ? new Date(item[13]) : null;
             return voucherDate && voucherDate >= startDate && voucherDate <= today;
         }).map(item => ({
-            SCRIP_NAME:item[3] .split(" ") // Split the string into words
-  .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()) // Capitalize first letter
+            SCRIP_NAME:item[3] .split(" ") 
+  .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()) 
   .join(" ")+' - '+item[4],
             COMPANY_CODE:item[7],
             TRADE_DATEStr: item[13] ? new Date(item[13]) : null,
